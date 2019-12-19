@@ -2,7 +2,7 @@
 This is my first Arch Linux Rice! This is (was) my daily driver for Winter 2019. A great way to close out the decade!
 
 | Desktop | Firefox | Terminal | Rofi |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | ![Screenshot](https://raw.githubusercontent.com/pradyungn/dotfiles/master/Arch-Winter/scrnshts/wal.png) | ![Screenshot](https://raw.githubusercontent.com/pradyungn/dotfiles/master/Arch-Winter/scrnshts/firefox.png) | ![Screenshot](https://raw.githubusercontent.com/pradyungn/dotfiles/master/Arch-Winter/scrnshts/terminal.png) | ![Screenshot](https://raw.githubusercontent.com/pradyungn/dotfiles/master/Arch-Winter/scrnshts/launcher.png) |
 
 ## About
