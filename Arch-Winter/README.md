@@ -1,6 +1,10 @@
 # Dotfiles: Arch Linux Winter
 This is my first Arch Linux Rice! This is (was) my daily driver for Winter 2019. A great way to close out the decade!
 
+| Desktop | Firefox | Terminal | Rofi |
+| --- | --- | --- |
+| ![Screenshot](https://raw.githubusercontent.com/pradyungn/dotfiles/master/Arch-Winter/scrnshts/wal.png) | ![Screenshot](https://raw.githubusercontent.com/pradyungn/dotfiles/master/Arch-Winter/scrnshts/firefox.png) | ![Screenshot](https://raw.githubusercontent.com/pradyungn/dotfiles/master/Arch-Winter/scrnshts/terminal.png) | ![Screenshot](https://raw.githubusercontent.com/pradyungn/dotfiles/master/Arch-Winter/scrnshts/launcher.png) |
+
 ## About
 This rice is meant to be adherent to the Dracula color scheme. Ergo, you won't have a problem finding application themes that match this rice. I've chosen to use as many terminal applications as possible in my rice, so that you end up with a more coherent color scheme.
 
