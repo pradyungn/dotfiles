@@ -37,8 +37,8 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec --no-startup-id "rofi -modi run,drun -show drun -display-drun 'Applications : ' -location 1 -xoffset 10 -yoffset 40 -line-padding 4 -columns 2 -width 99 -lines 5 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme 'Papirus' -font 'mononoki Nerd Font 11'"
-bindsym $mod+Shift+d exec --no-startup-id "rofi -modi run,drun -show run -display-run 'Terminal : ' -location 1 -xoffset 10 -yoffset 40 -line-padding 4 -columns 2 -width 99 -lines 5 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme 'Papirus' -font 'mononoki Nerd Font 11'"
+bindsym $mod+d exec --no-startup-id "rofi -modi run,drun -show drun -display-drun 'Applications' -location 1 -xoffset 10 -yoffset 40 -line-padding 4 -columns 2 -width 99 -lines 5 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme 'Papirus' -font 'mononoki Nerd Font 11'"
+bindsym $mod+Shift+d exec --no-startup-id "rofi -modi run,drun -show run -display-run 'Terminal' -location 1 -xoffset 10 -yoffset 40 -line-padding 4 -columns 2 -width 99 -lines 5 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme 'Papirus' -font 'mononoki Nerd Font 11'"
 # launch categorized menu
 #bindsym $mod+z exec --no-startup-id morc_menu
 
@@ -73,7 +73,8 @@ bindsym $mod+Shift+Ctrl+d --release exec "killall dunst; exec notify-send 'resta
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-#bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+bindsym $mod+Shift+v exec --no-startup-id i3-sensible-terminal -e 'vim'
+bindsym $mod+b exec "~/.config/i3/bctl"
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
@@ -104,7 +105,6 @@ bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
@@ -421,4 +421,4 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-exec_always --no-startup-id ~/startup.sh
+exec_always --no-startup-id ~/.config/i3/startup.sh

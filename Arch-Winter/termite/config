@@ -1,32 +1,36 @@
 [options]
-
-allow_bold = true
-audible_bell = true
-browser = xdg-open
-clickable_url = true
-cursor_blink = system
-cursor_shape = block
-dynamic_title = true
-filter_unmatched_urls = true
-geometry = 480x280
-font = mononoki Nerd Font Mono 11
-icon_name = terminal
-modify_other_keys = false
-mouse_autohide = false
 scroll_on_output = false
 scroll_on_keystroke = true
-scrollback_lines = 15000
-size_hints = false
-search_wrap = true
+audible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
 urgent_on_bell = true
-highlight = #30343e
+clickable_url = true
+font = mononoki Nerd Font Mono 11
+scrollback_lines = 10000
+search_wrap = true
+#icon_name = terminal
+#geometry = 640x480
+# "system", "on" or "off"
+cursor_blink = system
+# "block", "underline" or "ibeam"
+cursor_shape = block
+# $BROWSER is used by default if set, with xdg-open as a fallback
+#browser = xdg-open
+# set size hints for the window
+#size_hints = false
+# Hide links that are no longer valid in url select overlay mode
+filter_unmatched_urls = true
+# emit escape sequences for extra modified keys
+#modify_other_keys = false
 
 [colors]
 
 # special
 foreground=#f8f8f8
 cursor=#f8f8f8
-background=#282a36
+background= rgba(40, 42, 54, 1)
 # black
 color0=#000000
 color8=#4d4d4d
