@@ -15,24 +15,10 @@ alias df="df -h"
 alias free="free -m"
 alias np="nano -w PKGBUILD"
 alias more=less
-alias pmc="prosv5 make"
 alias bctl="bluetoothctl"
 alias dname="figlet '()RI()N'|lolcat"
 
 xhost +local:root > /dev/null 2>&1
-
-pmu()
-{
-	re='^[0-9]+$'
-	if  [[ -n $1 && $1 =~ $re ]]
-	then
-		echo Slot specified. Uploading to Slot $1
-		prosv5 mu --slot "$1"
-	else
-		echo Slot not specified. Defaulting to Slot 1
-		prosv5 mu
-	fi
-}
 
 pmt()
 {
@@ -66,7 +52,7 @@ prc()
 		echo "Directory name not specified"
 	fi
 }
-#ex ()
+# ex ()
 #{
 #  if [ -f $1 ] ; then
 #    case $1 in
