@@ -58,7 +58,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'sheerun/vim-polyglot'
 
 " Status bar
-Plug 'vim-airline/vim-airline'
+ Plug 'vim-airline/vim-airline'
 
 " Tabular auto-align
 Plug 'godlygeek/tabular'
@@ -98,5 +98,24 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " Dracula Colorscheme
 Plug 'dracula/vim', { 'as': 'dracula' }
+
+" VimWiki
+Plug 'vimwiki/vimwiki'
+
+"Clang Format
+Plug 'sbdchd/neoformat'
+
+" Arduino plugins
+Plug 'sudar/vim-arduino-syntax'
+Plug 'sudar/vim-arduino-snippets'
+
+" Vim TMUX Integration
+Plug 'christoomey/vim-tmux-navigator'
+
+" Emmet Integration
+Plug 'mattn/emmet-vim'
+
+" Jupyter Notebookin
+Plug 'bfredl/nvim-ipy'
 
 call plug#end()

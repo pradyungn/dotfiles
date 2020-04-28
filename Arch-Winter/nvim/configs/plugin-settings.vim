@@ -76,9 +76,13 @@ let g:NERDTreeIndicatorMapCustom = {
         \ 'ignored'   : '☒',
         \ "unknown"   : "?"
         \ }
+let g:NERDTreeWinPos = "right"
+let NERDTreeShowHidden=0
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let g:NERDTreeWinSize=35
 
 """"""""""""
-"Airline   "
+" Airline "
 """"""""""""
 "main settings
 let g:airline_theme='dracula'
@@ -93,13 +97,8 @@ let g:airline_symbols_branch = ''
 let g:airline_powerline_fonts = 1
 let g:airline_symbols.crypt = ''
 let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
@@ -122,7 +121,6 @@ let airline#extensions#coc#error_symbol = ':'
 let g:airline#extensions#hunks#hunk_symbols = [':', ':', ':']
 let g:airline#extensions#branch#format = 2
 
-
 """""""""""""
 "Devicons   "
 """""""""""""
@@ -138,14 +136,6 @@ let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 let g:webdevicons_enable_airline_statusline = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-
-"""""""""""""""""
-"Comfy-Scroll   "
-"""""""""""""""""
-noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
-noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
-let g:comfortable_motion_friction = 50.0
-let g:comfortable_motion_air_drag = 1.0
 
 """"""""""
 " Emoji  "
@@ -240,12 +230,6 @@ hi CocWarningSign ctermfg=blue
 hi CocErrorSign ctermfg=red
 hi CocInfoSign ctermfg=yellow
 hi CocHintSign ctermfg=green
-highlight Pmenu ctermbg=17
-highlight Pmenu ctermfg=7
-highlight PmenuSel ctermbg=4
-highlight PmenuSel ctermfg=0
-highlight Linenr ctermfg=grey
-
 
 " KEY REMAPS ""
 set updatetime=300
@@ -293,7 +277,8 @@ let g:coc_global_extensions = [
       \'coc-stylelint',
       \'coc-yaml',
       \'coc-template',
-      \'coc-utils'
+      \'coc-utils',
+      \'coc-rust-analyzer',
       \]
 
 augroup MyAutoCmd
@@ -365,3 +350,35 @@ let g:mkdp_markdown_css = '/home/pradyungn/.config/nvim/static/markdown-preview/
 " Trick plugin into hosting colors.css so we get nice themes
 let g:mkdp_highlight_css = '/home/pradyungn/.config/nvim/static/highlight.css'
 let g:mkdp_port = '3456'
+
+""""""""""""""""""
+"     Emmet      "
+""""""""""""""""""
+let g:user_emmet_leader_key = '<C-e>'
+let g:user_emmet_expandabbr_key = '<C-x><C-e>'
+imap <silent><expr> <Tab> <SID>expand()
+
+function! s:expand()
+  if pumvisible()
+    return "\<C-y>"
+  endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1]  =~# '\s'
+    return "\<Tab>"
+  endif
+  return "\<C-x>\<C-e>"
+endfunction
+
+""""""""""""""""""
+"    Jupyter     "
+""""""""""""""""""
+
+" function! ConnectToPipenvKernel()
+  " let l:kernel = system('echo "ipykernel_$(basename "$(pwd)")" | tr -d "\n"')
+  " call IPyConnect('--kernel', l:kernel, '--no-window')
+" endfunction
+
+" command! -nargs=0 RunQtConsole
+  " \call jobstart("jupyter qtconsole --JupyterWidget.include_other_output=True")
+
+" let g:ipy_celldef = '^##' " regex for cell start and end

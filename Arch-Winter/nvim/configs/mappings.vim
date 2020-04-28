@@ -10,10 +10,7 @@
 
 "***********************************************************************************
 
-" Main Vim Keybinds
-
-"***********************************************************************************
-
+" Main Vim Keybinds *********************************************************************************** 
 
 " Set leader to space bar
 let mapleader = " "
@@ -29,9 +26,9 @@ nnoremap <C-k> <C-w>k
 " Navigate to right window.
 nnoremap <C-l> <C-w>l
 " Horizontal split then move to bottom window.
-nnoremap <Leader>v <C-w>s
+nnoremap <Leader>v <C-w>s<C-w>j
 " Vertical split then move to right window.
-nnoremap <Leader>h <C-w>v<C-w>l
+  nnoremap <Leader>hh <C-w>v<C-w>l
 " Cycle tabs with Tab and Shift+Tab
 nnoremap<silent> <Tab> :bnext<CR>
 nnoremap<silent> <S-Tab> :bprevious<CR>
@@ -182,11 +179,11 @@ vmap <silent> <Leader>tr <Plug>TranslateRV
 
 
 " Vimtex
-nmap <silent> <Leader>lc :VimtexCompile<cr>
-vmap <silent> <Leader>ls :VimtexCompileSelected<cr>
-nmap <silent> <Leader>li :VimtexInfo<cr>
-nmap <silent> <Leader>lt :VimtexTocToggle<cr>
-nmap <silent> <Leader>lv :VimtexView<cr>
+nmap <silent> <Leader>lTc :VimtexCompile<cr>
+vmap <silent> <Leader>lTs :VimtexCompileSelected<cr>
+nmap <silent> <Leader>lTi :VimtexInfo<cr>
+nmap <silent> <Leader>lTt :VimtexTocToggle<cr>
+nmap <silent> <Leader>lTv :VimtexView<cr>
 
 
 " Markdown preview
@@ -211,3 +208,29 @@ nnoremap <silent> <Leader>4pu :!pmu 4<CR>
 " Editor Keybinds
 nnoremap <silent> <Leader>Q :q<CR>
 nnoremap<silent> <Space>q :bdelete<CR> 
+
+" Scratch Term Gang
+nnoremap <silent> <Leader>lt :call ToggleScratchTerm()<CR>
+
+" VimWiki Remaps
+:nmap <Leader>en <Plug>VimwikiNextLink
+let g:vimwiki_map_prefix = '<Leader>e'
+
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+
+" Jupyter NB Binds
+" nmap <silent> <leader>jqt :RunQtConsole<Enter>
+" nmap <silent> <leader>jk :IPython<Space>--existing<Space>--no-window<Enter>
+" nmap <silent> <leader>jc <Plug>(IPy-RunCell)
+" nmap <silent> <leader>ja <Plug>(IPy-RunAll)

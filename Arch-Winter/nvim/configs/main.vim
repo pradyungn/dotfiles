@@ -156,4 +156,16 @@ autocmd BufEnter * lcd %:p:h
 
 
 
+""""""""""""""""""""
+"  Dracula Colors  "
+""""""""""""""""""""
+colorscheme dracula
+set termguicolors
+
+
+let g:vimwiki_list = [{
+  \ 'path': '$HOME/vimwiki',
+  \ 'template_path': '$HOME/vimwiki/templates',
+  \ 'template_default': 'index',
+  \ 'template_ext': '.html'}]
 

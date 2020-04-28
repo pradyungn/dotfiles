@@ -31,6 +31,7 @@
   "git.removedSign.hlGroup": "GitGutterDelete",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "python.autoComplete.extraPaths": ["/usr/lib/python3.8/site-packages", "/home/pradyungn/.local/lib/python3.8/site-packages"],
 
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
@@ -65,7 +66,11 @@
  "languageserver": {
    "ccls": {
      "command": "ccls",
-     "filetypes": [
+     "args": [
+          "--log-file",
+          "/tmp/ccls.log"
+      ],
+      "filetypes": [
        "c",
        "cpp",
        "objc",
@@ -79,11 +84,12 @@
      "initializationOptions": {
         "cache": {
           "directory": "/tmp/ccls"
+        },
+        "client": {
+          "snippetSupport": true
         }
      }
     }
   },
-  "java.errors.incompleteClasspath.severity": "ignore",
-
-
+  "java.errors.incompleteClasspath.severity": "ignore"
 }

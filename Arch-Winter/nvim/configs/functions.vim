@@ -24,10 +24,10 @@ function! CreateCenteredFloatingWindow()
 endfunction
 
 " When term starts, auto go into insert mode
-autocmd TermOpen * startinsert
+" autocmd TermOpen * startinsert
 
 " Turn off line numbers etc
-autocmd TermOpen * setlocal listchars= nonumber norelativenumber
+" autocmd TermOpen * setlocal listchars= nonumber norelativenumber
 
 function! ToggleTerm(cmd)
     if empty(bufname(a:cmd))
@@ -44,7 +44,7 @@ function! ToggleProject()
 endfunction
 
 function! ToggleScratchTerm()
-    call ToggleTerm('bash')
+    call ToggleTerm('zsh')
 endfunction
 
 function! ToggleLazyGit()
