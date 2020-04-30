@@ -1,0 +1,1 @@
+rofi -modi run,drun -show drun -location 5 -xoffset -10 -yoffset -40 -font 'mononoki Nerd Font 12' -display-drun 'Apps' -line-padding 4 -columns 1 -width 13 -lines 10 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme "Papirus"

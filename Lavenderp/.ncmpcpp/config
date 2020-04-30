@@ -1,0 +1,49 @@
+### Directories ###
+ncmpcpp_directory = ~/.ncmpcpp
+lyrics_directory  = ~/.ncmpcpp/lyrics
+mpd_music_dir     = ~/Music
+
+### Behaviour ###
+message_delay_time = 1
+autocenter_mode = "yes"
+centered_cursor = "yes"
+ignore_leading_the = "yes"
+allow_for_physical_item_deletion = "no"
+
+### Visualizer ###  
+visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_output_name = "mpd_visualizer"
+visualizer_in_stereo = "no"
+visualizer_sample_multiplier = 2
+visualizer_sync_interval = 30
+
+### Appearance ###
+colors_enabled = "yes"
+playlist_display_mode = "columns"
+
+# Window #
+song_window_title_format = "mpd » {%a - }{%t}|{%f}"
+statusbar_visibility = "yes"
+header_visibility = "no"
+titles_visibility = "no"
+
+# Progress bar #
+progressbar_look = "━━━"
+progressbar_color = "black"
+progressbar_elapsed_color = "white"
+progressbar_boldness = "yes"
+song_status_format = "$b$6%t$/b {$8by} $b$6%a$8$/b"
+
+# Song list #
+song_list_format = "{$8%a ⠂ }{%t}$R{%l}"
+
+# Playlist #
+song_columns_list_format = "(50)[magenta]{ar} (50)[green]{t}"
+
+# Colors #
+main_window_highlight_color = "green"
+main_window_color = "blue"
+color1 = "white"
+color2 = "red"
+
+execute_on_song_change = notify-send "Now Playing ♫" "\n\n$(mpc current -f '%artist% - %title% // %time%')"
