@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+
+import subprocess
+import os
+
+try:
+    init = subprocess.check_output("tmux ls", shell=True).decode("utf-8").strip()
+    init = init.split("\n")
+except:
+    init = [] 
+
+qs = ""
+for i in init:
+    qs+=i.split(" (")[0]+"|"
+
+qs += "New Session|Cancel"
+
+d = subprocess.check_output(f'rofi -sep "|" -dmenu -i -p "" -font "Iosevka Nerd Font 9" -location 3 -columns 1 -xoffset -12 -yoffset 62 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "{qs}"', shell=True).decode("utf-8").strip()
+
+if d=="Cancel":
+    pass
+elif d=="New Session":
+    d = subprocess.check_output(f'rofi -sep "|" -dmenu -i -p "Name" -font "Iosevka Nerd Font 9" -location 0 -columns 1 -yoffset -80 -width 20 -hide-scrollbar -line-padding 4 -padding 20 -lines 0 <<< ""', shell=True).decode("utf-8").strip()
+    print(f"{d}")
+    if d=="":
+        os.system("alacritty -e tmux")
+    else:
+        os.system(f"alacritty -e tmux new -s \"{d}\"")
+else:
+    d = d.split(":")[0]
+    os.system(f"alacritty -e tmux a -t \"{d}\"")

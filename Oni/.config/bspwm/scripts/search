@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+import subprocess
+import os
+
+d = subprocess.check_output(f'rofi -sep "|" -dmenu -i -p "Search" -font "Iosevka Nerd Font 9" -location 0 -yoffset -250 -columns 1 -width 50 -hide-scrollbar -line-padding 4 -padding 20 -lines 0 <<< ""', shell=True).decode("utf-8").strip()
+
+d = d.replace(" ", "+")
+
+os.system(f"xdg-open https://duckduckgo.com/?q={d}&ia=web")

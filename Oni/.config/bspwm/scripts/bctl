@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+
+import subprocess
+import os
+import time
+
+pwr = subprocess.check_output("bluetoothctl show", shell=True)
+pwr = 'Powered: yes' in pwr.decode("utf-8")
+if pwr:
+    dl = subprocess.check_output("bluetoothctl paired-devices", shell=True)
+    dl = list(dl.decode("utf-8").strip().split('\n'))
+    ds = 'Turn Off Adapter|Pair New Device|'
+    for i in dl:
+        ds += i[25:] + '|'
+    ds += 'Cancel'
+    d = subprocess.check_output(f'rofi -sep "|" -dmenu -p "" -i -font "Iosevka Nerd Font 9" -location 3 -columns 1 -xoffset -12 -yoffset 62 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "{ds}"', shell=True)
+    if d.decode("utf-8").strip() == "Turn Off Adapter":
+        os.system("bluetoothctl power off")
+    elif d.decode("utf-8").strip() == "Cancel":
+        pass
+    elif d.decode("utf-8").strip() == "Pair New Device":
+        os.system("bluetoothctl scan on &")
+        os.system("bluetoothctl agent on &")
+        time.sleep(2)
+        dp = subprocess.check_output("bluetoothctl devices", shell=True)
+        dp = list(dp.decode("utf-8").strip().split("\n"))
+        ps = ""
+        for i in dp:
+            if i not in dl:
+                ps += i[25:] + '|'
+        ps += "Cancel"
+        o = subprocess.check_output(f'rofi -sep "|" -dmenu -i -p "" -font "Iosevka Nerd Font 9" -location 3 -columns 1 -xoffset -12 -yoffset 62 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "{ps}"', shell=True)
+        if o.decode("utf-8").strip() =='Cancel':
+            pass
+        else:
+            for i in dp:
+                if(o.decode("utf-8").strip() in i):
+                    wp = i
+            fa = wp[7:24]
+            os.system(f"bluetoothctl pair {fa}")
+            os.system("bluetoothctl agent off")
+            os.system("bluetoothctl scan off")
+    else:
+        for i in dl:
+            if(d.decode("utf-8").strip() in i):
+                wd = i
+        fa = wd[7:24]
+        os.system(f"bluetoothctl connect {fa}")
+else:
+    o = subprocess.check_output('rofi -sep "|" -dmenu -i -p "" -font "Iosevka Nerd Font 9" -location 3 -columns 1 -xoffset -12 -yoffset 62 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "Turn On Adapter|Cancel"', shell=True)
+    if o.decode("utf-8").strip() == "Turn On Adapter":
+        os.system('bluetoothctl power on')
+

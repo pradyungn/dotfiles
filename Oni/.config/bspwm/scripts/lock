@@ -1,0 +1,38 @@
+#!/bin/sh
+
+i3lock --nofork                 	\
+    --ignore-empty-password		\
+    \
+    --indicator				\
+    --bar-indicator			\
+    --bar-position="1070"		\
+    --bar-base-width="10"		\
+    --bar-orientation=horizontal	\
+    --bar-color=0f0f0f			\
+    --ringvercolor=8aac8b		\
+    --ringwrongcolor=ac8a8c		\
+    --bshlcolor=ac8a8c			\
+    --keyhlcolor=aca98a			\
+    \
+    --clock				\
+    --timestr="%I:%M %p"		\
+    --time-font="Iosevka"	\
+    --timesize=72			\
+    --timepos="1500:920"		\
+    --timecolor=cacacaff		\
+    \
+    --datestr="%A, %d %B"		\
+    --datecolor=cacacaff		\
+    --date-font="Iosevka"	\
+    --datesize=64			\
+    --datepos="tx:1020"	\
+    \
+    --verif-font="Iosevka"	\
+    --verifsize=72			\
+    --veriftext="Welcome home!"		\
+    --verifcolor=cacacaff   \
+    --wrong-font="Iosevka"	\
+    --wrongsize=72			\
+    --wrongtext="No Entry!"		\
+    --wrongcolor=cacacaff   \
+    --image=/home/pradyungn/Pictures/moon.jpg

@@ -1,0 +1,243 @@
+#  ____  _   _ 
+# |  _ \| \ | | Pradyun Narkadamilli
+# | |_) |  \| | https://pradyungn.tech
+# |  __/| |\  | MIT Licensed
+# |_|   |_| \_| Copyright Pradyun Narkadamilli 2020
+
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+alt + Return
+	kitty
+
+alt + shift + Return
+  kitty --class floating_term
+
+# program launcher
+alt + d
+  rofi -modi run,drun -show drun -display-drun 'Applications' -location 1 -xoffset 10 -yoffset 12 -line-padding 4 -columns 2 -width 99 -lines 5 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme 'Papirus' -font 'Iosevka Nerd Font 9'
+
+alt + w
+  rofi -modi window -show window -hide-scrollbar -padding 20 -yoffset -250 -line-padding 4 -width 25 -lines 6 -font 'Iosevka Nerd Font 9'
+
+# make sxhkd reload its configuration files:
+alt + Escape
+	pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+alt + shift + r
+	bspc wm -r
+
+# close and kill
+alt + {_,shift + }q
+	bspc node -{k,c}
+
+# alternate between the tiled and monocle layout
+alt + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+alt + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest node
+alt + shift + g
+	bspc node -s biggest
+
+alt + g
+  ~/.config/bspwm/scripts/search
+
+#
+# state/flags
+#
+
+# set the window state
+alt + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+alt + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+alt + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+atl + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+alt + shift + p
+  ~/.config/bspwm/scripts/power
+
+alt + ctrl + p
+  pavucontrol
+
+XF86MonBrightnessUp
+  xbacklight -inc 5
+
+XF86MonBrightnessDown
+  xbacklight -dec 5
+
+# focus the next/previous node in the current desktop
+alt + {_,shift + }c
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+alt + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+alt + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+alt + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+alt + {_,shift + }{F1, F2, F3, F4, F5, F6, F7, F8, F9,F10}
+	bspc {desktop -f,node -d} '^{1,2,3,4,5,6,7,8,9,10}'
+
+super + alt + {_,shift + }{1-9, 0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+alt + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+alt + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+alt + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+alt + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+alt + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+alt + ctrl + shift + {h,j,k,l}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Gimmicks
+
+alt + shift + b
+  ~/.config/bspwm/scripts/bctl
+
+alt + ctrl + t
+  ~/.config/bspwm/scripts/tmxui
+
+alt + 1
+  discord
+
+alt + shift + 1
+  slack
+
+alt + 2
+  qutebrowser
+
+alt + shift + 2
+  firefox
+
+alt + shift + 3
+  kitty -e ranger
+
+alt + 3
+  kitty --class floating_term -e 'ranger'
+
+alt + shift + 4
+  kitty -e gotop
+
+alt + 4
+  kitty --class floating_term -e gotop
+
+alt + shift + 5
+  kitty -e ncmpcpp
+
+alt + 5
+  kitty --class floating_term -e ncmpcpp
+
+alt + Print
+  scrot -u -b -e 'mv $f ~/Pictures/Screenshots'
+
+Print
+  scrot -e 'mv $f ~/Pictures/Screenshots'
+
+alt + ctrl + Print
+  scrot -s -e 'mv $f ~/Pictures/Screenshots'
+
+alt + v
+  kitty -e nvim
+
+alt + ctrl + v
+  kitty -e vim
+
+alt + shift + v
+  code
+
+alt + z
+  zathura
+
+alt + 9
+  playerctl previous
+
+alt + 0
+  playerctl next
+
+alt + 8 
+  playerctl play-pause
+
+XF86AudioPlay
+  playerctl play-pause
+
+XF86AudioPause
+  playerctl play-pause
+
+XF86AudioNext
+  playerctl next
+
+XF86AudioPrev
+  playerctl previous
+
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+XF86AudioRaiseVolume
+  pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+XF86AudioLowerVolume
+  pactl set-sink-volume @DEFAULT_SINK@ -5%

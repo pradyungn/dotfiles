@@ -1,0 +1,251 @@
+// * stackexchange.styl
+
+// For all Stack Exchange sites
+
+hr
+    background-color color-background-highlight-extra-less
+    color color-background-highlight-extra-less
+
+.bounty-indicator, .bounty-indicator-tab
+    background-color violet
+                    
+.bottom-notice
+    background-color highlight
+    
+.comments-link
+    color green
+    
+.page-numbers
+    background-color green
+    color emphasized-more
+    
+    &.current
+        background-color orange
+        color color-background
+
+.post-menu
+    a
+        color violet
+            
+.question-status
+    background-color highlight
+
+.bg-black-050
+    background-color transparent
+
+.val-info
+    background-color transparent
+    color()
+
+.s-label
+    color()
+
+
+// ** Code
+
+pre code
+    background-color highlight
+    color emphasized
+
+    .atn
+        color blue
+    .atv
+        color cyan
+    .com 
+        color comment
+    .kwd
+        color green
+    .lit
+        color magenta
+    .pln
+    .pun
+        color()
+    .str
+        color cyan
+    .tag
+        color green
+    .typ
+        color yellow
+
+// ** Footer
+
+#footer
+    background-color color-background-highlight-extra-less-less
+    color()
+
+    #footer-sites
+        th
+            color emphasized
+
+.top-footer-links a
+    color green            
+            
+// ** Header
+
+.so-header
+    background-color color-background-highlight-extra-less
+    color emphasized
+
+    a
+        color green
+
+    .navigation .-list .-item :hover
+        background-color green
+        color emphasized-more-more
+
+
+.topbar-dialog
+    background-color()
+    box-shadow color-background-highlight-extra 5px 5px 5px
+
+    .current-site-container
+        background-color()
+
+    .header
+        background-color highlight
+
+        a
+            color emphasized
+
+    .site-link
+        color emphasized            
+
+#header
+    background-color color-background-highlight-extra-less
+                
+#question-header
+    .question-hyperlink
+        color emphasized
+    
+// *** Logo
+#hlogo
+    a
+        filter opacity(75%)
+
+// ** Question lists
+
+.new-post-activity
+    background-color highlight
+
+.tagged-interesting
+    background-color color-background-highlight-extra-less
+
+// *** Answer counts      
+div.answered-accepted
+    background-color green
+    color emphasized-more
+    
+    .mini-counts
+        background-color green
+        color emphasized-more
+        
+.answered
+    // Including answered-but-not-accepted questions
+    .mini-counts
+        span
+            color green
+.unanswered
+    .mini-counts
+        span
+            color()    
+            
+// ** Sidebar
+#hot-network-questions
+    a
+        color cyan
+        
+    h4 a.js-gps-track
+        color emphasized
+
+#sidebar
+    .community-bulletin .bulletin-item-content a
+        color emphasized    
+    .module.community-bulletin
+        background-color highlight
+        color emphasized
+    .question-hyperlink
+        color cyan
+
+.newuser
+    background-color highlight
+    color emphasized
+
+// *** Labels
+
+.label-key
+    color()
+
+    b
+        color emphasized
+    
+// *** Chat room ads
+
+#h-chat-link
+    color emphasized
+
+.ad502-room
+    background-color highlight
+    box-shadow color-background-highlight-extra 0px 1px 3px
+    color emphasized
+
+// ** Tabs
+
+#tabs
+    a
+        background-color transparent
+        background-image linear-gradient(to bottom, color-background, color-background-highlight)
+        color emphasized
+        
+        &.youarehere
+            background-image linear-gradient(to bottom, orange, color-background)
+            color emphasized-more-more
+            
+    
+// ** Tags
+
+.post-tag
+    background-color highlight-extra
+    color color-background
+
+    &::before
+        background-color()
+
+// ** Users
+
+// *** Comments
+a.comment-user.owner
+    background-color green
+    color emphasized-more
+
+// *** Post signature
+.post-signature
+    background-color highlight
+    color emphasized
+
+    a
+        color cyan
+
+    &.owner
+        .user-info .user-details a
+            color green
+
+    span.relativetime
+        color emphasized            
+                        
+// ** Vote arrows
+.vote
+    background-color highlight
+
+    .star-off
+        filter opacity(75%)
+
+    .star-on
+        filter opacity(50%) i
+    
+    .vote-down-off, .vote-up-off
+        filter opacity(50%)
+
+// *** Vote counts
+.answer-votes
+    background-color highlight-extra
+    color color-background    

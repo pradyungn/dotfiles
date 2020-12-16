@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: signautre header thing for low level langs
+# key: losignat
+# --
+//  ____  _   _
+// |  _ \| \ | | Pradyun Narkadamilli
+// | |_) |  \| | https://pradyungn.tech
+// |  __/| |\  | MIT License
+// |_|   |_| \_| Copyright 2020 Pradyun Narkadamilli
