@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MENU="$(rofi -sep "|" -dmenu -i -p '' -font 'Iosevka Nerd Font 9' -width 10 -lines 4 -location 2 -yoffset 62 <<< "Lock|Logout|Reboot|Shutdown")"
+MENU="$(rofi -sep "|" -dmenu -i -p '' -font 'Iosevka Nerd Font 9' -width 10 -lines 4 -location 2 -yoffset $(cat ~/.config/polybar/height) <<< "Lock|Logout|Reboot|Shutdown")"
             case "$MENU" in
                 *Lock) systemctl suspend && ~/.config/bspwm/scripts/lock;;
                 *Logout) bspc quit;;

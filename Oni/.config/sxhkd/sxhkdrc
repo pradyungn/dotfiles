@@ -14,6 +14,9 @@ super + Return
 super + shift + Return
   alacritty --class floating_term,floating_term
 
+super + ctrl + Return
+  alacritty --class teeny_term,teeny_term
+
 # program launcher
 super + d
   rofi -show drun -location 1 -xoffset 12 -yoffset 62 -columns 1 -width 10 -lines 5
@@ -32,7 +35,7 @@ super + shift + r
 
 # redshift toggle
 super + r
-  if ! pgrep redshift; then redshift &; notify-send "Redshift -- ON"; else pkill redshift; notify-send "Redshift -- SHUTTING DOWN"; while pgrep redshift; do sleep 1; done; notify-send "Redshift -- OFF"; fi
+  if ! pgrep redshift; then redshift -l 37.752895016980105:-121.9030517729804 &; notify-send "Redshift -- ON"; else pkill redshift; notify-send "Redshift -- SHUTTING DOWN"; while pgrep redshift; do sleep 1; done; notify-send "Redshift -- OFF"; fi
 
 # close and kill
 super + {_,shift + }q
@@ -223,11 +226,14 @@ super + e
   emacs
 
 # Media/Volume key events
+XF86AudioPlayPause
+  playerctl play-pause
+  
 XF86AudioPlay
-  playerctl play
+  playerctl play-pause
 
 XF86AudioPause
-  playerctl pause
+  playerctl play-pause
 
 XF86AudioNext
   playerctl next
@@ -269,7 +275,7 @@ super + m
   ~/.config/bspwm/scripts/mpc_rof
 
 # Notion
-super + n
+super + {_, + ctrl} + n
   notion-app-nativefier
 
 # Change the polybar's "display" widget message
@@ -283,3 +289,9 @@ super + shift + 1
 # Increase brightness
 super + shift + 2
   xbacklight -inc 5
+
+super + F
+    polybar-msg cmd hide; bspc config top_padding 0; bspc config window_gap -3; bspc config border_width 3; echo 12 > ~/.config/polybar/height
+
+super + ctrl + f
+    polybar-msg cmd show; bspc config top_padding 0; bspc config window_gap 12; bspc config border_width 4; echo 62 > ~/.config/polybar/height

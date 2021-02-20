@@ -15,7 +15,7 @@ for i in init:
 
 qs += "New Session|Cancel"
 
-d = subprocess.check_output(f'rofi -sep "|" -dmenu -i -p "" -font "Iosevka Nerd Font 9" -location 3 -columns 1 -xoffset -12 -yoffset 62 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "{qs}"', shell=True).decode("utf-8").strip()
+d = subprocess.check_output(f'rofi -sep "|" -dmenu -i -p "" -font "Iosevka Nerd Font 9" -location 3 -columns 1 -xoffset -12 -yoffset $(cat ~/.config/polybar/height) -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "{qs}"', shell=True).decode("utf-8").strip()
 
 if d=="Cancel":
     pass

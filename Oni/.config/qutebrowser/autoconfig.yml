@@ -17,6 +17,8 @@ settings:
   bindings.commands:
     global:
       normal:
+        ',t': config-cycle content.user_stylesheets ~/.config/qutebrowser/mountain-all-sites.css
+          ""
         X: config-cycle statusbar.show always in-mode;;config-cycle tabs.show always
           never
   colors.completion.item.selected.match.fg:
@@ -39,7 +41,11 @@ settings:
     https://discord.com: true
     https://whereby.com: true
     https://www.messenger.com: true
+  content.geolocation:
+    https://gps-coordinates.org: true
+    https://www.google.com: true
   content.media.audio_capture:
+    https://binarysearch.com: true
     https://bridgehacks.webex.com: true
     https://discord.com: true
     https://edgenuity.com/: ask
@@ -59,6 +65,7 @@ settings:
     https://flipgrid.com: true
     https://meet.google.com: true
     https://online-voice-recorder.com: true
+    https://play.upbeatmusicapp.com: true
     https://player.powerspeak.edgenuity.com: true
     https://r17.core.learn.edgenuity.com/Player/: ask
     https://smccd.zoom.us: true
@@ -83,9 +90,12 @@ settings:
   content.notifications:
     https://123movies.st: false
     https://abhilyrics.com: false
+    https://dnschecker.org: false
     https://fujitsuscannerstore.com: false
     https://meet.google.com: true
     https://musictaste.space: true
+    https://newmovierulz.org: false
+    https://nypost.com: false
     https://www.chess.com: false
     https://www.facebook.com: false
     https://www.netflix.com: false
