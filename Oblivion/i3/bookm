@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+import subprocess
+import os
+
+d = subprocess.check_output(f'rofi -sep "|" -dmenu -lines 7 -i -p "Bookmarks" -font "Iosevka Nerd Font 9" -location 1 -xoffset 10 -yoffset 39 -columns 1 -width 10 -line-padding 4 -padding 20 <<< "Schoolloop|Reddit|Youtube|Github|JAM.S|Crunchyroll|Cancel"', shell=True).decode("utf-8").strip()
+
+if d=="Cancel":
+    pass
+elif d=="Schoolloop":
+    os.system("xdg-open https://dvhs.schoolloop.com")
+elif d=="Reddit":
+    os.system("xdg-open https://www.reddit.com")
+elif d=="Youtube":
+    os.system("xdg-open https://www.youtube.com")
+elif d=="Github":
+    os.system("xdg-open https://www.github.com")
+elif d=="JAM.S":
+    os.system("xdg-open https://www.justanothermusic.site")
+elif d=="Crunchyroll":
+    os.system("xdg-open https://www.crunchyroll.com")
+

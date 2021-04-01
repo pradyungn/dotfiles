@@ -1,0 +1,297 @@
+#  ____  _   _ 
+# |  _ \| \ | | Pradyun Narkadamilli
+# | |_) |  \| | https://pradyungn.tech
+# |  __/| |\  | MIT License
+# |_|   |_| \_| Copyright 2020 Pradyun Narkadamilli
+
+# All the keybinds for my linux system!
+
+# terminal
+super + Return
+  alacritty
+
+# Floating terminal
+super + shift + Return
+  alacritty --class floating_term,floating_term
+
+super + ctrl + Return
+  alacritty --class teeny_term,teeny_term
+
+# program launcher
+super + d
+  rofi -show drun -location 1 -xoffset 12 -yoffset 62 -columns 1 -width 10 -lines 5
+
+# Window switch
+super + w
+  rofi -show window -location 1 -xoffset 12 -yoffset 62 -width 18 -lines 5
+
+# make sxhkd reload its configuration files:
+super + Escape
+  pkill -USR1 -x sxhkd && sxhkd
+
+# quit/restart bspwm
+super + shift + r
+  bspc wm -r
+
+# redshift toggle
+super + r
+  if ! pgrep redshift; then redshift &; notify-send "Redshift -- ON"; else pkill redshift; notify-send "Redshift -- SHUTTING DOWN"; while pgrep redshift; do sleep 1; done; notify-send "Redshift -- OFF"; fi
+
+# close and kill
+super + {_,shift + }q
+  bspc node -{k,c}
+
+# send the newest marked node to the newest preselected node
+super + y
+  bspc node newest.marked.local -n newest.!automatic.local;
+
+# swap the current node and the biggest node
+super + g
+  bspc node -s biggest
+
+# set the window state
+super + {t,shift + t,s,f}
+  bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# tabbed shiieeeeet
+super + ctrl + t; {h, j, k, l}
+  ~/.config/bspwm/scripts/tabc add {west, south, north, east} $(bspc query -N -n focused)
+
+super + ctrl + t; r
+  tabbed=$(bspc query -N -n focused); \
+  child=$(~/.config/bspwm/scripts/tabc list $tabbed | head -n1); \
+  ~/.config/bspwm/scripts/tabc remove $child
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+  bspc node -g {marked,locked,sticky,private}
+
+# ------------ #
+#  focus/swap  #
+# ------------ #
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+  bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+  bspc node -f @{parent,brother,first,second}
+
+# Power menu
+super + shift + p
+  ~/.config/bspwm/scripts/power
+
+# Pulseaudio volume app
+super + ctrl + p
+  pavucontrol
+
+# Brightness controls
+XF86MonBrightnessUp
+  xbacklight -inc 5
+
+XF86MonBrightnessDown
+  xbacklight -dec 5
+
+# focus the next/previous node in the current desktop
+super + {_,shift + }c
+  bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+  bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+  bspc {node,desktop} -f last
+
+# alternate keybinding
+super + {space, shift + space}
+  bspc {desktop,monitor} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+  bspc wm -h off; \
+  bspc node {older,newer} -f; \
+  bspc wm -h on
+
+# focus or send to the given desktop
+super + alt + {_,shift + }{1-9, 0}
+  bspc {desktop -f,node -d} '^{1-9, 10}'
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+  bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+  bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+  bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+  bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+  bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+super + alt + ctrl + {h,j,k,l}
+  bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+  bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+super + alt + shift + ctrl +  {h,j,k,l}
+  bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+  bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# bluetooth mini-menu
+super + shift + b
+  ~/.config/bspwm/scripts/bctl
+
+# tmux session manager
+super + u
+  ~/.config/bspwm/scripts/tmxui
+
+# disc
+super + 1
+  discord
+
+# web
+super + 2
+  qutebrowser
+
+# floaty file explorer
+super + shift + 3
+  alacritty --class floating_term,floating_term -e 'ranger'
+
+# file explorer
+super + 3
+  alacritty -e ranger
+
+# floaty resources
+super + shift + 4
+  alacritty --class floating_term,floating_term -e gotop
+
+# resource usage
+super + 4
+  alacritty -e gotop
+
+# floaty music
+super + shift + 5
+  alacritty --class floating_term,floating_term -e ncmpcpp
+
+# music
+super + 5
+  alacritty -e ncmpcpp
+
+# Window screenshot
+super + Print
+  scrot -u -b -e 'mv $f ~/Pictures/Screenshots'
+
+# Screen shot
+Print
+  scrot -e 'mv $f ~/Pictures/Screenshots'
+
+# Snip tool
+super + ctrl + Print
+  flameshot gui
+
+# Neovim
+super + v
+  alacritty -e nvim
+
+# VSC
+super + ctrl + v
+  code
+
+# PDFs
+super + z
+  zathura
+
+# Doom
+super + e
+  emacs
+
+# Media/Volume key events
+XF86AudioPlayPause
+  playerctl play-pause
+  
+XF86AudioPlay
+  playerctl play-pause
+
+XF86AudioPause
+  playerctl play-pause
+
+XF86AudioNext
+  playerctl next
+
+XF86AudioPrev
+  playerctl previous
+
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+XF86AudioRaiseVolume
+  pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+XF86AudioLowerVolume
+  pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Media controls
+super + 8
+  playerctl play-pause
+
+super + 0
+  playerctl next
+
+super + 9
+  playerctl previous
+
+# Volume controls
+super + shift + 8
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+super + shift + 9
+  pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+super + shift + 0
+  pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# MPD mini-menu
+super + m
+  ~/.config/bspwm/scripts/mpc_rof
+
+# Notion
+super + {_, + ctrl} + n
+  notion-app-nativefier
+
+# Change the polybar's "display" widget message
+super + N
+  ~/.config/bspwm/scripts/polynotif
+
+# Decrease brightness
+super + shift + 1
+  xbacklight -dec 5
+
+# Increase brightness
+super + shift + 2
+  xbacklight -inc 5
+
+super + F
+    polybar-msg cmd hide; bspc config top_padding 0; bspc config window_gap -3; bspc config border_width 3; echo 12 > ~/.config/polybar/height
+
+super + ctrl + f
+    polybar-msg cmd show; bspc config top_padding 0; bspc config window_gap 12; bspc config border_width 4; echo 62 > ~/.config/polybar/height

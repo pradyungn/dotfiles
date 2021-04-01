@@ -1,0 +1,9 @@
+#!/bin/bash
+
+MENU="$(rofi -sep "|" -dmenu -i -p '' -font 'Iosevka Nerd Font 9' -width 10 -lines 4 -location 2 -yoffset $(cat ~/.config/polybar/height) <<< "Lock|Logout|Reboot|Shutdown")"
+            case "$MENU" in
+                *Lock) systemctl suspend && ~/.config/bspwm/scripts/lock;;
+                *Logout) bspc quit;;
+                *Reboot) systemctl reboot ;;
+                *Shutdown) systemctl -i poweroff
+            esac

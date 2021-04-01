@@ -1,0 +1,186 @@
+# i3 config file (v4)
+
+set $mod Mod4
+
+default_border pixel 3
+default_floating_border pixel 3
+
+hide_edge_borders none
+
+font xft:Iosevka Nerd Font 9
+
+floating_modifier $mod
+
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec i3-sensible-terminal --class=floating_term
+
+bindsym $mod+Shift+q kill
+
+bindsym $mod+w exec --no-startup-id "rofi -modi window -show window -hide-scrollbar -padding 20 -yoffset -250 -line-padding 4 -width 25 -lines 6 -font 'Iosevka Nerd Font 9'"
+bindsym $mod+d exec --no-startup-id "rofi -modi run,drun -show drun -display-drun 'Applications' -location 1 -xoffset 10 -yoffset 39 -line-padding 4 -columns 2 -width 99 -lines 5 -padding 25 -hide-scrollbar -show-icons -drun-icon-theme 'Papirus' -font 'Iosevka Nerd Font 9'"
+
+bindsym $mod+Ctrl+m exec --no-startup-id pavucontrol
+
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 5;" 
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5;"
+bindsym Shift+XF86MonBrightnessUp exec "redshift -o 120;"
+bindsym Ctrl+Shift+XF86MonBrightnessUp exec "redshift -x;"
+
+bindsym $mod+g exec --no-startup-id "~/.config/i3/search"
+bindsym $mod+Shift+b exec "~/.config/i3/bctl"
+bindsym $mod+Shift+d exec --no-startup-id "termite -e 'nvim +VimwikiDiaryIndex'"
+bindsym $mod+Shift+w exec --no-startup-id "termite -e 'nvim +VimwikiIndex'"
+bindsym $mod+b exec "~/.config/i3/bookm"
+bindsym $mod+Ctrl+p exec --no-startup-id feh -r ~/Pictures
+bindsym $mod+Shift+T exec --no-startup-id "~/.config/i3/tmxui"
+
+bindsym $mod+2 exec firefox
+bindsym $mod+Ctrl+3 exec nautilus
+bindsym $mod+3 exec i3-sensible-terminal --class floating_term -e 'ranger'
+bindsym $mod+Shift+3 exec i3-sensible-terminal -e 'ranger'
+bindsym $mod+4 exec i3-sensible-terminal --class floating_term -e gotop
+bindsym $mod+Shift+4 exec i3-sensible-terminal -e 'gotop'
+bindsym $mod+5 exec i3-sensible-terminal --class floating_term -e 'ncmpcpp' 
+bindsym $mod+Shift+5 exec i3-sensible-terminal -e 'ncmpcpp'
+bindsym $mod+t exec --no-startup-id pkill picom
+bindsym $mod+Ctrl+t exec --no-startup-id picom -b
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym $mod+Shift+v exec --no-startup-id i3-sensible-terminal -e 'nvim' 
+bindsym $mod+Ctrl+v exec --no-startup-id i3-sensible-terminal -e 'vim' 
+bindsym $mod+Ctrl+Shift+v exec --no-startup-id code
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+workspace_auto_back_and_forth yes
+
+bindsym $mod+semicolon split h;exec notify-send 'tile horizontally'
+bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+q split toggle
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+Shift+minus move scratchpad
+
+bindsym $mod+minus scratchpad show, move position center
+
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+
+bindsym $mod+F1 workspace $ws1
+bindsym $mod+F2 workspace $ws2
+bindsym $mod+F3 workspace $ws3
+bindsym $mod+F4 workspace $ws4
+bindsym $mod+F5 workspace $ws5
+bindsym $mod+F6 workspace $ws6
+bindsym $mod+F7 workspace $ws7
+bindsym $mod+F8 workspace $ws8
+
+bindsym $mod+Ctrl+F1 move container to workspace $ws1
+bindsym $mod+Ctrl+F2 move container to workspace $ws2
+bindsym $mod+Ctrl+F3 move container to workspace $ws3
+bindsym $mod+Ctrl+F4 move container to workspace $ws4
+bindsym $mod+Ctrl+F5 move container to workspace $ws5
+bindsym $mod+Ctrl+F6 move container to workspace $ws6
+bindsym $mod+Ctrl+F7 move container to workspace $ws7
+bindsym $mod+Ctrl+F8 move container to workspace $ws8
+
+bindsym $mod+Shift+F1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+F2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+F3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+F4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+F5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+F6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+F7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+F8 move container to workspace $ws8; workspace $ws8
+
+for_window [title="alsamixer"] floating enable border pixel 3
+for_window [class="Nitrogen"] floating enable sticky enable border pixel 3
+for_window [title="feh"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Matplotlib"] floating enable
+for_window [class="floating_term"] floating enable, resize set 640 480, move position center
+
+for_window [urgent=latest] focus
+
+bindsym $mod+Shift+c reload
+
+bindsym $mod+Shift+r restart
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+9 exec --no-startup-id betterlockscreen -s;
+bindsym $mod+p exec --no-startup-id "~/.config/i3/power"
+
+client.focused          #ff79c6 #ff79c6 #1e1f29 #1e1f29
+client.focused_inactive #caa9fa #caa9fa #1e1f29 #1e1f29
+client.unfocused        #caa9fa #caa9fa #1e1f29 #1e1f29
+client.urgent           #ff5555 #ff5555 #1ABC9C #268BD2
+client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+client.background       #404552
+
+#############################
+### settings for i3-gaps: ###
+#############################
+
+gaps inner 14
+gaps outer -2
+
+smart_borders on
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
+bindsym $mod+m exec --no-startup-id "~/.config/polybar/scripts/mpc_rof"
+bindsym XF86AudioPause exec --no-startup-id "playerctl play-pause"
+bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
+bindsym XF86AudioNext exec --no-startup-id "playerctl next"
+bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
+
+exec_always --no-startup-id ~/.config/i3/startup.sh

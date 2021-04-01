@@ -1,0 +1,41 @@
+ncmpcpp_directory = ~/.ncmpcpp
+lyrics_directory  = ~/.ncmpcpp/lyrics
+mpd_music_dir     = ~/Music
+
+message_delay_time = 1
+autocenter_mode = "yes"
+centered_cursor = "yes"
+ignore_leading_the = "yes"
+allow_for_physical_item_deletion = "no"
+
+visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_output_name = "mpd_visualizer"
+visualizer_in_stereo = "no"
+visualizer_sync_interval = 30
+visualizer_type = "wave_filled"
+visualizer_look = +|
+
+colors_enabled = "yes"
+playlist_display_mode = "classic"
+
+song_window_title_format = "mpd » {%a - }{%t}|{%f}"
+statusbar_visibility = "yes"
+header_visibility = "no"
+titles_visibility = "no"
+
+progressbar_look = "━━━"
+progressbar_elapsed_color = "white"
+song_status_format = "$b$7%t$/b {$8-} $b$6%a$8$/b"
+
+song_list_format = "{$7%a ⠂ }{$6%t}$R{$5%l$8}"
+
+song_columns_list_format = "(10)[cyan]{l} (40)[magenta]{a} (50)[blue]{t}"
+
+# Colors #
+main_window_color = "blue"
+color1 = "white"
+color2 = "red"
+
+external_editor = nvim
+
+execute_on_song_change = ~/.ncmpcpp/albnotif.sh

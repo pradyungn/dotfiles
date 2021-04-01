@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+
+init = subprocess.check_output("mpc").decode("utf-8").strip().split("%")
+if len(init) == 3:
+    re = init[0].split("/")[1].split("  ")[1].strip().split(":")
+    pg = int(re[0]) + int(re[1])/60
+    if pg <= 1/12:
+        os.system("mpc prev")
+    else:
+        os.system("mpc seek 0")
+        os.system("mpc play")

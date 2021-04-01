@@ -1,0 +1,7 @@
+MENU="$(rofi -sep "|" -dmenu -i -p 'System' -font 'Iosevka Nerd Font 9' -xoffset -10 -yoffset -39 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "Lock|Logout|Reboot|Shutdown")"
+            case "$MENU" in
+                *Lock) betterlockscreen -s;;
+                *Logout) bspc quit;;
+                *Reboot) systemctl reboot ;;
+                *Shutdown) systemctl -i poweroff
+            esac

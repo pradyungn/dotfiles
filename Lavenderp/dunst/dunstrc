@@ -1,0 +1,63 @@
+[global]
+    monitor = 0
+    follow = keyboard
+    geometry = "350x400-12+12"
+    indicate_hidden = no
+    shrink = no
+    transparency = 0
+    notification_height = 0
+    separator_height = 3
+    padding = 10
+    horizontal_padding = 10
+    frame_width = 3
+    frame_color = "#caa9fa"
+    separator_color = auto
+    sort = no
+    idle_threshold = 0
+
+    ### Text ###
+
+    font = Iosevka Custom 9
+    line_height = 5
+    markup = full
+    format = "%s\n%b"
+    alignment = left
+    show_age_threshold = -1
+    word_wrap = no
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = true
+    show_indicators = no
+
+    ### Icons ###
+    icon_position = left
+    max_icon_size = 64
+    sticky_history = yes
+
+    # Maximum amount of notifications kept in history
+    history_length = 1
+    title = Dunst
+    class = Dunst
+    startup_notification = false
+
+[experimental]
+    per_monitor_dpi = 96
+
+[urgency_low]
+    background = "#1e1f29"
+    foreground = "#f8f8f2"
+    timeout = 4
+    icon = /home/pradyungn/Pictures/lavenderpier.png
+
+[urgency_normal]
+    background = "#1e1f29"
+    foreground = "#f8f8f2"
+    timeout = 4
+    icon = /home/pradyungn/Pictures/lavenderpier.png
+
+[urgency_critical]
+    background = "#1e1f29"
+    foreground = "#f8f8f2"
+    timeout = 4
+    icon = /home/pradyungn/Pictures/lavenderpier.png

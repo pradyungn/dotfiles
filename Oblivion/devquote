@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+import os
+import random
+
+sayings = [
+    ["'tis the responsibility of the sysadmin not to break his system.", 26],
+    ["dd -> disk destroyer", 20],
+    ["Having more than 20 lines of commented code is the  mark of a good programmer.Commenting code instead   of deleting it is the     mark of a legendary       programmer.", 26],
+    ["Neovim #1", 9],
+    ["Happy Hacking!", 14],
+    ["Rule #34: If it's an error,it's on Stack Overflow", 27],
+    ["Don't break the system.", 23],
+    ["UI is like humor: If you have to explain it, it's shitty", 25],
+    ["If it comes down to a newlaptop or a girlfriend,  choose a thonkpad", 25],
+    ["Some things in life are  worth waiting for, unlessit's <25mbps", 25]
+]
+
+term = sayings[random.randint(0, len(sayings)-1)]
+st = ""
+for i in list(range(term[1])):
+    st += "-"
+
+os.system(f"echo \"{st}\" | toilet -f term --gay")
+os.system(f"echo \"{term[0]}\" | toilet -f term -w {term[1]} --gay")
+os.system(f"echo \"{st}\" | toilet -f term --gay")

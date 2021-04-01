@@ -1,0 +1,1031 @@
+// * github.styl
+
+// ** Global elements
+
+*
+    border-color color-background-highlight
+
+// ** Front page
+
+.news .alert .pull-info
+    background-color color-background-highlight-extra-less-less
+
+// ** Misc
+
+.link-gray-dark
+.text-gray-dark
+    color()
+
+.bg-white
+    // Nope!
+    background-color()
+
+.border
+    // How convenient...
+    border-color()
+
+.breadcrumb .repo-root.js-repo-root
+    a
+        color blue
+.breadcrumb strong.final-path
+    color()
+
+button.ajax-pagination-btn
+    background-color highlight
+    color emphasized
+
+    &:hover
+        background-color highlight-extra
+
+.comment-reactions
+    .btn-link
+        color()
+
+    .user-has-reacted
+        background-color highlight
+
+
+.text-gray-dark
+    color()
+
+.contrib-number
+    color emphasized
+
+.counter
+    background-color color-background-highlight-extra-less
+    color emphasized
+
+.diffstat-bar
+    color()
+
+.file-header
+    background-color highlight
+
+.file-history-tease .participation
+    background-color()
+    color()
+
+    .quickstat strong
+        color()
+    & a
+        color comment
+
+.file-history-tease .author a
+    color()
+.file-history-tease-header
+    background-color highlight
+.file-info-divider
+    background-color highlight-extra
+.file-wrap
+    color()
+
+    *
+        background-color transparent
+
+.filter-bar
+    background-color color-background-highlight-extra-less-less
+
+a.filter-item
+.filter-item
+    &.selected
+        background-color highlight
+        color emphasized
+    &:hover
+        background-color highlight-extra
+        color emphasized
+
+    color()
+
+.flash
+    background-color highlight
+    color emphasized
+
+.gh-header
+    background-color()
+
+.gh-header-number
+    color comment
+
+.ellipsis-expander
+.hidden-text-expander a
+    background-color highlight
+
+.issue-meta
+    color comment
+
+.issues-listing
+    a
+        color()
+
+.muted-link
+    color()
+
+.new-user-avatar-cta
+    background-color highlight
+    border-color comment
+    color emphasized
+
+.overall-summary
+    border-color color-background-highlight-extra
+
+.pinned-repo-item.border
+    border-color comment
+
+.progress-bar
+    background-color highlight-extra
+
+.simple-box
+    background-color highlight
+
+.social-count
+    background-color highlight
+    border-color color-background-highlight-extra
+    color emphasized
+
+.scope-badge
+    background-color highlight-extra
+    color emphasized
+
+.stats-switcher-wrapper
+    background-color()
+
+    .numbers-summary
+        li
+            a
+                color()
+
+
+.table-list-header-toggle .btn-link
+    color comment
+
+    &.selected
+        color()
+
+.text-emphasized
+    color emphasized
+
+.text-diff-added
+    color green
+
+.text-diff-deleted
+    color red
+
+.avatar
+.timeline-comment-avatar
+    filter opacity(75%)
+
+// ** Code syntax highlighting
+.blob-code
+    background-color()
+    color()
+.blob-code-addition
+    background-color rgba(lighten(green, 50%), 0.1)
+
+    .x
+        background-color darken(green, 25%)
+        color lighten(color-text, 50%)
+.blob-code-deletion
+    background-color rgba(red, 0.2)
+
+    .x
+        background-color darken(red, 50%)
+        color lighten(color-text, 50%)
+.blob-code-hunk
+    background-color highlight
+    border-color comment
+.blob-code-inner
+    color()
+.blob-num
+    background-color()
+    color comment
+
+.file
+    color()
+
+.form-control
+    background-color highlight
+    border-color color-background-highlight-extra
+
+.pl-c
+    color comment
+
+.pl-c1
+    color blue
+
+.pl-e
+    color yellow
+
+.pl-en
+    color blue
+
+.pl-k
+    color green
+    bold()
+
+.pl-pds
+    color cyan
+
+.pl-s
+    color cyan
+
+.pl-smi
+    color()
+
+.pl-v
+    color green
+    bold()
+
+// + signs
+.pl-mi1
+    color green
+    background-color transparent
+
+// - signs
+.pl-md
+    color red
+    background-color transparent
+
+// ** .border-*
+
+.border-bottom
+.border-top
+    border-color color-background-highlight
+
+// ** boxed-group
+.boxed-group
+    *
+        border-color color-background-highlight-extra
+
+    article
+        background-color()
+        color()
+
+    > h3
+        background-color color-background-highlight-extra-less
+        color emphasized
+.more-repos
+    background-color color-background-highlight-extra-less
+    box-shadow inset 0 1px 0 color-background-highlight-extra i
+
+.boxed-group-inner
+    background-color()
+
+// ** branch
+.branch-action-body
+    background-color highlight
+    border-color comment
+
+    div
+        border-color comment
+
+.branch-action-state-clean .branch-action-icon
+    background-color green i
+
+.branch-action-state-dirty
+.branch-action-state-unstable
+.branch-action-state-unknown
+    .branch-action-icon
+        background-color yellow i
+        color white i
+
+.text-shadow-light
+.branch-group-name
+.branch-summary
+    color()
+    text-shadow none i
+
+.branch-a-b-count .meter
+    background-color yellow
+
+.more-branches
+.branch-group-heading
+.branch-infobar
+.branch-name
+    border-color comment
+    background-color highlight
+
+.State
+.State:visited
+    color white
+.State--red
+    background-color red
+    color color-background
+.State--green
+    background-color green
+    color color-background
+
+// *** branch popup
+.select-menu-filters
+    background-color color-background-highlight-extra-less-less
+    color emphasized
+
+// branch tabs
+.js-select-menu-tab
+    background-color color-background-highlight-extra-less
+    color emphasized
+
+// branch selected tabs
+.select-menu-tabs a.selected
+.select-menu-tab-nav.selected
+    background-color color-background-highlight-extra
+    color color-background
+
+// *** signed commit popup
+
+.signed-commit-header
+    background-color color-background
+
+// ** build
+.build-status-item
+    background-color color-background-highlight-extra-less
+    color emphasized
+
+    .build-status-details
+        color blue
+
+// ** capped-card
+
+.capped-card
+
+    h3
+        background-color color-background-highlight-extra-less
+
+        a
+            color emphasized
+
+.capped-card-content
+    background-color()
+
+// ** capped-list
+
+.capped-list
+
+    th
+        background-color color-background-highlight-extra-less-less
+        color emphasized
+
+    tr:nth-child(2n)
+        background-color highlight
+
+// ** commit
+.commit
+.commit-meta
+.commit-icon .octicon
+.commit-group-title .octicon-git-commit
+    background-color()
+
+    *
+        border-color color-background-highlight-extra
+
+.commit-author
+    color()
+.commit-author-section
+    color()
+.commit-meta
+    color comment
+
+    .sha-block
+        color comment
+
+        .sha
+            color()
+.commit-ref
+code.commit-sha
+    background-color highlight
+    color emphasized
+
+    .user
+        color cyan
+
+.commit-branches *
+.commit-tease
+.commit-title
+    // e.g. "This branch is 8 commits ahead of..."
+    background-color transparentify(blue, color-background, 0.2)
+    border none i
+
+    *
+        color emphasized
+
+.commit-tease-contributors
+    background-color highlight
+
+div.commit-branches
+div.commit.full-commit p.commit-title
+qul.branches-list
+    // An individual commit's page
+    background-color highlight
+    color emphasized
+
+    *
+        // One of the rare times using the * selector seems to make sense
+        background-color highlight
+        color emphasized
+
+.commit-meta
+    background-color highlight
+    color()
+
+.commits-listing:before
+    background-color highlight
+
+.full-commit
+    background-color highlight
+    border-color comment
+
+    *
+        text-shadow none i
+
+.commit-desc pre
+    background-color transparent i
+    color()
+
+// ** Commits list (i.e. user/project/commits/ URL)
+
+.commit.table-list-item
+    border-color color-background-highlight
+
+.commit-meta.commit-author-section
+    background-color transparent
+    color()
+
+.table-list-cell .commit-title
+    background-color transparent
+    color()
+
+// ** completeness-indicator
+
+.completeness-indicator-success
+    background-color green i
+
+.completeness-indicator-problem
+    background-color yellow i
+    color white i
+
+.copyable-terminal
+    background-color highlight
+
+// ** discussions
+.blankslate
+    background-color highlight
+    color emphasized
+.comment-form-head.tabnav
+    background-color()
+
+.conversation-list-heading
+    .inner
+        background-color()
+
+.discussion-item-closed
+    .discussion-item-icon
+        background-color red
+        color emphasized
+
+.discussion-item-icon
+    background-color highlight-extra
+    color emphasized
+
+    &.octicon
+        color emphasized
+
+.discussion-item-entity
+.discussion-item .renamed-was
+.discussion-item .renamed-is
+    color emphasized
+
+.discussion-timeline:before
+    background-color color-border
+
+.discussion-timeline-actions
+    background-color()
+
+.drag-and-drop
+    background-color highlight
+
+.new-discussion-timeline .closed-banner
+    // Yes, it's strange that this requires using the border color as
+    // the background color, and vice-versa, but it does...
+    background-color color-border
+    border-color color-background
+
+.timeline-comment
+    background-color()
+    border-color color-background-highlight-extra
+.timeline-comment-header
+    background-color highlight
+.timeline-comment-wrapper
+    // Don't show extra borders around every comment
+    border-color color-background
+
+// ** donut
+.donut-chart
+    > .pending
+        fill yellow i
+
+// ** .dropdown-menu
+
+.dropdown-divider
+    background-color color-border
+
+.dropdown-item
+    color()
+
+    &:hover
+        background-color color-background-highlight-extra
+        color emphasized
+
+.dropdown-menu
+    background-color color-background-highlight-extra-less
+    color emphasized
+    border-color()
+
+// ** files
+.files
+    *
+        color()
+
+    tbody
+        tr
+            border-color color-background-highlight
+        tr:nth-child(even)
+            background-color color-background-highlight-tad-extra
+        tr:nth-child(odd)
+            background-color()
+
+        tr:hover *
+            background-color color-background-highlight-extra-less
+
+// ** header
+.btn
+    background-image linear-gradient(to bottom, button-gradient-top, button-gradient-bottom) i
+    border-color color-background-highlight-extra
+    color emphasized
+
+.btn:hover
+    background-color color-background-highlight-extra-less-less
+
+.btn-primary, .issues-listing .btn-primary
+    // For some reason, the .issues-listing down below is overriding the
+    // .btn-primary here unless I use .issues-listing here also
+    background-color green
+    background-image linear-gradient(green, darken(green, 50%)) i
+    color darken(emphasized, 150%)
+    filter opacity(62.5%)
+
+.entry-title
+    a
+        color blue i
+
+.Header
+    background-color color-background-highlight-extra-less-less
+    border-bottom-color color-background-highlight-extra i
+
+    a
+        color emphasized
+
+.lang
+    color emphasized
+
+// *** New "tabs on top" header
+
+.reponav-item
+.pagehead-tabs-item
+    background-color highlight
+    border-color transparent
+    color()
+
+    &:visited
+        color()
+
+    &.selected
+         background-color()
+         border-color red color-background-highlight-extra-less transparent
+
+// ** footer
+
+.site-footer-links
+    *
+        color()
+
+// ** Issues
+
+.Box-row--focus-gray.navigation-focus
+    background-color color-background-highlight-extra-less-less
+    color emphasized
+
+// ** js
+.js-directory-link
+    a()
+
+.js-site-search-form input
+.js-chromeless-input-container
+    background-color()
+    border-color color-background-highlight-extra
+// ** label
+a.label
+    color black
+    filter opacity(75%)
+
+// ** notifications
+.notifications-list
+    a
+        color()
+    li
+        background-color()
+
+// ** octicon
+
+.octicon-repo
+    color base1
+
+.type-icon-state-closed
+    color transparentify(red, color-background, 0.65)
+
+.type-icon-state-merged
+    color violet
+
+.type-icon-state-open
+    color transparentify(green, color-background, 0.65)
+
+.octicon-alert
+    color white
+.octicon-x
+    color red
+.octicon-check
+    color green
+.octicon-primitive-dot
+    color yellow
+
+.octicon-clippy
+    color emphasized
+
+.octicon-diff
+    color white i
+
+.octicon-markdown
+    color comment
+
+// ** org
+
+.orghead
+    background-color highlight
+    border-color()
+    border-bottom 0px i
+    color emphasized
+
+.org-name
+    color emphasized
+
+.pagehead.orghead
+    background-color highlight
+
+// ** outline-box
+
+.outline-box-highlighted
+    background-color highlight
+    color emphasized
+
+// ** pagination
+
+.pagination
+    .current
+        background-color highlight-extra
+        color emphasized
+    .disabled
+            background-color highlight
+            color comment
+
+            &:hover
+                background-color highlight
+    .gap
+        background-color highlight
+        color comment
+    a
+        background-color highlight
+        border-color color-background
+        color()
+
+        &:hover
+            background-color highlight-extra
+            color color-background
+
+// ** Pull requests
+
+.empty-cell
+.diffbar
+    background-color()
+
+.merge-status-item
+    background-color color-background-highlight-extra-less
+
+.merge-message
+    background-color color-background-highlight-extra-less-less
+
+.pr-toolbar
+    background-color()
+
+// *** Code reviews
+
+
+.review-thread-reply
+    background-color highlight
+
+    .inline-comment-form
+        background-color()
+
+.merged.octicon
+.octicon-git-merge
+    color violet
+
+// ** releases
+.uploaded-files
+    background-color()
+
+.upload-progress
+    background-color highlight
+    box-shadow 1px 0px 0px color-background-highlight inset
+
+// ** readmes
+#readme .plain
+    background-color()
+
+.markdown-body
+.markdown-body table *
+    background-color()
+    border-color()
+    color()
+
+    a
+        a()
+    code, pre
+        background-color highlight
+
+    hr
+        background-color highlight-extra
+
+    img
+        background-color()
+
+.task-list-item.hovered
+    background-color color-background-highlight
+
+.range-editor
+    background-color highlight
+
+.compare-pr-placeholder
+    background-color color-background-highlight-extra-less-less
+
+ul.comparison-list > li.title
+    background-color color-background-highlight-extra-less
+ul.comparison-list
+    background-color color-background-highlight-extra-less-less
+
+// ** repository
+.repository-description
+    color()
+
+.repository-meta
+    .edit-repository-meta
+        label
+            color()
+
+.pagehead.repohead
+    background-color highlight
+
+.repository-content .RecentBranches
+    background-color highlight
+    border-color()
+
+.repohead-details-container
+    a
+        color()
+
+// ** select-menu
+.select-menu-modal
+    border-color color-text
+
+    *
+        color()
+
+.select-menu-header
+.select-menu-header *
+    background-color highlight
+    color emphasized
+    text-shadow none i
+
+.select-menu-item
+    background-color()
+
+.select-menu-item.navigation-focus
+.select-menu-item.navigation-focus.selected
+.select-menu-item.navigation-focus.select-menu-action
+.select-menu-item.navigation-focus
+.select-menu-item-text.navigation-focus
+        background-color highlight-extra
+        color emphasized
+
+// ** sidebar
+.repository-sidebar
+    background-color()
+
+.thread-subscription-status
+    background-color()
+
+// *** sunken-menu
+.sunken-menu
+    background-image linear-gradient(to right, color-background-highlight 0%, color-background 8px) i
+    box-shadow 1px 0px 0px color-background-highlight inset
+
+    &:before
+        background-image linear-gradient(color-background, transparent) i
+
+    &:after
+        background-image linear-gradient(transparent, color-background) i
+
+.sunken-menu-item
+    border-color color-background
+
+    &.selected
+        background-color()
+        border-color color-background-highlight-extra-less
+        color emphasized
+
+        &:after
+            background-color orange
+
+.sunken-menu-separator:before
+    background-image linear-gradient(to right, color-background-highlight 70%, color-background 100%) i
+
+// ** states
+.state
+    color emphasized
+
+.state-closed
+    background-color red
+
+.state-open
+    background-color green
+
+
+// ** subnav
+
+.subnav-item
+
+    color()
+
+    &:hover
+        background-color color-background-highlight-extra-less-less
+    &:visited
+        color()
+    &.selected
+        background-color highlight
+
+.subnav-links
+    a
+        &:hover
+            background-color highlight
+
+.subnav-search input
+    border-color comment
+
+
+// ** tabnav
+.right .tabnav-extra
+    // This affects the "Markdown supported" text above a comment box.
+    // Only .tabnav-extra should be necessary here, but without
+    // .right, it doesn't work.  No idea why.  That's CSS for ya.
+    color comment
+
+a.tabnav-tab
+.tabnav-tab
+    border-color transparent
+    color comment
+
+    &.selected
+        background-color()
+        background-image linear-gradient(color-background-highlight, color-background) i
+        border-color()
+        color emphasized
+
+// ** tables
+
+.table-list
+    tr
+    li
+        background-color()
+
+        &:hover
+            background-color color-background-highlight-extra-less
+
+.table-list-header
+    background-color highlight
+
+// ** text
+.text-pending
+    color yellow i
+
+    .octicon-primitive-dot
+        color yellow
+
+.text-red
+    color red i
+
+// ** timeline
+.timeline-commits
+    .commit-meta
+        background-color()
+
+        .commit-id
+            color comment
+
+// ** topic-tag
+
+.topic-tag.topic-tag-link
+    background-color highlight
+    color()
+
+// ** underline-nav
+
+.underline-nav-item
+    color()
+
+    &.selected
+        border-bottom-color red i
+        color()
+
+// ** user-profile-nav
+
+.user-profile-nav
+    background-color highlight
+    border-color()
+
+.user-profile-sticky-bar
+    &:after
+        background-color highlight
+        border-color()
+
+// ** viz / graphs
+
+.graphs
+
+    .area
+        fill green
+
+.summary-stats li .num
+
+    color emphasized
+
+.viz
+    background-color color-background-highlight-extra-less-less
+
+// facebox (e.g. when forking)
+
+.facebox-popup
+    color()
+    background-color()
+
+    .octicon
+        color white
+
+    .owner-select-target
+        color()
+        background-color highlight
+
+        &:hover
+            background-color highlight-extra
+
+// ** suggester (emoji)
+.suggester
+    background-color color-background-highlight-extra-less
+
+    li.navigation-focus
+        background-color highlight-extra
+
+// ** .menu
+
+.menu
+    background-color highlight
+
+.menu-item
+    &.selected
+        background-color color-background-highlight-extra-less
+    &:hover
+        background-color highlight-extra
+
+// ** .Box
+
+.Box
+    background-color()
+
+.Box-header
+    background-color highlight
+
+svg > * text  // I don't understand this selector but it works
+    color()
+    fill color-text i
+
+.insertions
+    color green
+
+.deletions
+    color red

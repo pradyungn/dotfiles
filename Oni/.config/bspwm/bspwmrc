@@ -1,0 +1,98 @@
+#! /bin/sh
+
+#  ____  _   _
+# |  _ \| \ | | Pradyun Narkadamilli
+# | |_) |  \| | https://pradyungn.tech
+# |  __/| |\  | MIT License
+# |_|   |_| \_| Copyright 2020 Pradyun Narkadamilli
+
+# My bspwm configuration on my personal machine
+
+bspc config top_padding 0
+
+bspc config border_width         4
+bspc config window_gap          12
+
+# Visual options
+bspc config split_ratio         0.50
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+
+# bspc config top_padding         74
+# bspc config left_padding        24
+# bspc config right_padding       24
+# bspc config bottom_padding      24
+
+bspc config urgent_border_color "#c6a679"
+bspc config normal_border_color "#262626"
+bspc config active_border_color "#262626"
+bspc config focused_border_color "#ac8a8c"
+bspc config presel_feedback_color "#4c4c4c"
+
+bspc rule -a Pavucontrol state=floating
+bspc rule -a feh state=floating
+bspc rule -a Matplotlib state=floating
+bspc rule -a Nitrogen state=tiled
+bspc rule -a teeny_term state=floating center=true rectangle=450x210+0+0
+bspc rule -a floating_term state=floating center=true rectangle=540x350+0+0
+# bspc rule -a Emacs state=floating center=true rectangle=640x800+0+0
+bspc rule -a Emacs state=tiled
+# bspc rule -a notion-nativefier-46aee8 state=floating center=true rectangle=1200x600+0+0
+bspc rule -a Zathura state=tiled
+
+bspc config focus_follows_pointer false
+
+wmname LG3D
+
+autorandr --change
+
+# feh --bg-tile ~/Pictures/mitian.png
+hsetroot -screens 1 -solid \#0f0f0f
+
+if [ "$(bspc query -M | wc -l)" -eq "3" ]; then
+  bspc monitor $(bspc query -M | sed -n 1p) -d I II III IV
+  bspc monitor $(bspc query -M | sed -n 2p) -d V VI VII
+  bspc monitor $(bspc query -M | sed -n 3p) -d VIII IX X
+elif [ "$(bspc query -M | wc -l)" -eq "2" ]; then
+  bspc monitor $(bspc query -M | sed -n 1p) -d I II III IV V
+  bspc monitor $(bspc query -M | sed -n 2p) -d VI VII VIII IX X
+else
+  bspc monitor eDP-1 -d I II III IV V
+fi
+
+# touchpad settings
+xinput set-prop "SYNA8004:00 06CB:CD8B Touchpad" "libinput Tapping Enabled" 1
+xinput set-prop "SYNA8004:00 06CB:CD8B Touchpad" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "SYNA8004:00 06CB:CD8B Touchpad" "libinput Click Method Enabled" 0 1
+
+# MPD
+if ! pgrep -u $UID -x mpd >/dev/null; then
+    mpd &
+fi
+
+# MPD MPRIS interface
+if ! pgrep -u $UID -x mpDris2 >/dev/null; then
+   mpDris2 &
+fi
+
+# compton
+if ! pgrep picom; then
+    picom -b
+fi
+
+# Spawning Polybar on all connected monitors
+killall polybar
+while pgrep polybar; do sleep 1; done
+for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar -c ~/.config/polybar/config.ini middle &
+    MONITOR=$m polybar -c ~/.config/polybar/config.ini right &
+    MONITOR=$m polybar -c ~/.config/polybar/config.ini left &
+    MONITOR=$m polybar -c ~/.config/polybar/config.ini tasks &
+    if [ "$(cat ~/.config/polybar/msg)" ]; then
+        HOOK=2 MONITOR=$m polybar -c ~/.config/polybar/config.ini panel &
+    else 
+        HOOK=1 MONITOR=$m polybar -c ~/.config/polybar/config.ini panel &
+    fi
+done
+
+sxhkd &
