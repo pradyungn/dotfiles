@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [  "$(pgrep spotify)" ]; then
+    player="spotify"
+
+    source=$(playerctl metadata -p "$player" --format "{{ title }}\n{{ artist }}\n{{ mpris:length/1000000 }}\n{{ position/1000000 }}\n{{ duration(mpris:length) }}\n{{ duration(position) }}\n{{ status }}")
+    title=$(echo -e $source | cut -f1 -d$'\n')
+    output="$title" 
+    echo $(echo -e $source | cut -f2 -d$'\n') > ~/.config/eww/artist.txt
+    echo $(echo -e $source | cut -f3 -d$'\n' | awk '{print int($1)}') > ~/.config/eww/data/duration
+    echo $(echo -e $source | cut -f4 -d$'\n' | awk '{print int($1)}') > ~/.config/eww/data/position
+    echo $(echo -e $source | cut -f5 -d$'\n') > ~/.config/eww/data/displayduration
+    echo $(echo -e $source | cut -f6 -d$'\n') > ~/.config/eww/data/displaypos
+    echo $(echo -e $source | cut -f7 -d$'\n') > ~/.config/eww/data/status
+else
+    output=$(cat ~/.config/eww/title.txt)
+    source=$(playerctl metadata -p "mpd" --format "{{ mpris:length/1000000 }}\n{{ position/1000000 }}\n{{ duration(mpris:length) }}\n{{ duration(position) }}\n{{ status }}")
+    echo $(echo -e $source | cut -f1 -d$'\n' | awk '{print int($1)}') > ~/.config/eww/data/duration
+    echo $(echo -e $source | cut -f2 -d$'\n' | awk '{print int($1)}') > ~/.config/eww/data/position
+    echo $(echo -e $source | cut -f3 -d$'\n') > ~/.config/eww/data/displayduration
+    echo $(echo -e $source | cut -f4 -d$'\n') > ~/.config/eww/data/displaypos
+    echo $(echo -e $source | cut -f5 -d$'\n') > ~/.config/eww/data/status
+fi
+
+count=$(echo -n "$output" | wc -c)
+if [ "$count" -le 27 ]; then
+    echo $output
+else 
+    echo ${output:0:23}...
+fi
+

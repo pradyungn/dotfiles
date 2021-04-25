@@ -1,0 +1,9 @@
+#!/bin/bash
+
+MENU="$(rofi -sep "|" -dmenu -i -p '' -font 'Iosevka Nerd Font 9' -width 10 -lines 4 -location 0 <<< "Lock|Logout|Reboot|Shutdown")"
+            case "$MENU" in
+                *Lock) systemctl suspend && ~/.config/herbstluftwm/scripts/lock;;
+                *Logout) herbstclient quit;;
+                *Reboot) systemctl reboot ;;
+                *Shutdown) systemctl -i poweroff
+            esac

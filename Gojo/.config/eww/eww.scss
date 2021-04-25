@@ -1,0 +1,713 @@
+* {
+    all: unset; //Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+button {
+    all: unset;
+    padding: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+// Bar
+.bar-container {
+    .bar {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    & {
+        background-color: #0f0f0f;
+        color: #f0f0f0;
+        font-family: Iosevka Nerd Font;
+        font-variant: normal;
+        border-radius: 8px;
+    }
+}
+
+.right slider, .left slider {
+    all: unset;
+    color: #ac8a8c;
+}
+
+.barslider scale trough {
+    all: unset;
+    background-color: #4c4c4c;
+    border-radius: 50px;
+    min-height: 3px;
+    min-width: 50px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+
+.vol scale trough highlight {
+    all: unset;
+    background-color: #8aacab;
+    border-radius: 10px;
+}
+
+.ram scale trough highlight {
+    all: unset;
+    background-color: #8f8aac;
+    border-radius: 10px;
+}
+
+.label {
+    font-size: 16px;
+}
+
+.low scale trough highlight {
+    all: unset;
+    background-color: #ac8a8c;
+    border-radius: 10px;
+}
+
+.med scale trough highlight {
+    all: unset;
+    background-color: #c6a679;
+    border-radius: 10px;
+}
+
+.high scale trough highlight {
+    all: unset;
+    background-color: #8aac8b;
+    border-radius: 10px;
+}
+
+.light scale trough highlight {
+    all: unset;
+    background-color: #aca98a;
+    border-radius: 10px;
+}
+
+.Charging {
+    color: #8aac8b;
+}
+
+
+// Launcher bs
+
+.musicbox {
+    .music {
+        .title {
+            font-size: 18px;
+        }
+
+        .artist {
+            font-size: 14px;
+        }
+
+        .musictext {
+            margin-left: 14px;
+        }
+
+
+        .art {
+            background-size: 100px;
+            min-width: 100px;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            padding: 0;
+        }
+
+        & {
+            min-height: 100px;
+            margin-right: 12px;
+        }
+    }
+
+    & {
+        background: #0f0f0f;
+        color: #f0f0f0;
+
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 8px;
+        min-width: 400px;
+        min-height: 80px;
+
+        font-family: "Iosevka Nerd Font";
+        font-variant: normal;
+    }
+}
+
+.todaybox {
+    & {
+        background: #0f0f0f;
+        color: #f0f0f0;
+
+        border-radius: 8px;
+        min-width: 200px;
+        min-height: 111px;
+
+        font-family: "Iosevka Nerd Font";
+        font-variant: normal;
+    }
+
+    .today {
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .date {
+        font-size: 24px;
+    }
+
+    .day {
+        font-size: 16px;
+    }
+}
+
+.timebox {
+    & {
+        background: #0f0f0f;
+        color: #f0f0f0;
+
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 8px;
+        min-width: 200px;
+        min-height: 90px;
+
+        font-family: "Iosevka Nerd Font";
+        font-variant: normal;
+        margin-left: 20px;
+    }
+
+    .bigtime {
+        font-size: 36px;
+    }
+}
+
+.statgroup {
+    margin-top: 20px;
+}
+
+.sliderbox {
+
+    & {
+        background: #0f0f0f;
+        color: #f0f0f0;
+
+        margin-bottom: 0;
+        border-radius: 8px;
+
+        font-family: "Iosevka Nerd Font";
+        font-variant: normal;
+        margin-top: 18px;
+        min-width: 395px;
+        min-height: 110px;
+    }
+
+    .sliders {
+        .bigslider {
+            scale {
+                margin-left: 20px;
+            }
+
+            scale trough {
+                all: unset;
+                background-color: #4c4c4c;
+                border-radius: 50px;
+                min-height: 10px;
+                min-width: 300px;
+            }
+        }
+
+        .label {
+            font-size: 24px;
+        }
+
+        .light {
+            & {
+                margin-left: -5px;
+                margin-bottom: 10px;
+            }
+
+            .label {
+                margin-right: -6px;
+            }
+        }
+    }
+}
+
+.mainweather-box {
+    & {
+        background: #0f0f0f;
+        color: #f0f0f0;
+
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 8px;
+
+        font-family: "Iosevka Nerd Font";
+        font-variant: normal;
+        margin-top: 20px;
+        min-width: 205px;
+    }
+
+    .mainweather {
+        & {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .sky {
+            font-size: 24px;
+        }
+
+        .feeling {
+            font-size: 16px;
+        }
+
+        .sky_icon {
+            font-size: 36px;
+        }
+
+        .code-01d {
+            color: #c6a679;
+        }
+
+        .code-01n, .code-11d, .code-11n {
+            color: #aca98a;
+        }
+
+        .code-02n, .code-02d, .code-03n, .code-03d, .code-04n, .code-04d {
+            color: #aca98a;
+        }
+
+        .code-09d, .code-09n, .code-10d, .code-10n, .code-13d, .code-13n, .code-50d, .code-50n {
+            color: #8aacab;
+        }
+    }
+}
+
+
+.sideweather-box {
+    & {
+        background: #0f0f0f;
+        color: #f0f0f0;
+
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 8px;
+
+        font-family: "Iosevka Nerd Font";
+        font-variant: normal;
+        margin-top: 20px;
+        margin-left: 20px;
+        min-width: 175px;
+    }
+
+    .sideweather {
+        & {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        .weatherline {
+            .weather_icon {
+                font-size: 24px;
+                margin-right: 18px;
+            }
+
+            .weather {
+                font-size: 16px;
+            }
+
+            .humidity {
+                font-size: 36px;
+                color: #8aacab;
+            }
+
+            .wind {
+                margin-right: 12px;
+                color: #8f8aac;
+            }
+
+            .temp {
+                color: #ac8a8c;
+            }
+        }
+
+        .lastline {
+            margin-bottom: 0;
+            margin-top: -5px;
+            margin-left: -4px;
+            margin-bottom: -10px;
+        }
+
+        .windline {
+            margin-left: -5px;
+        }
+    }
+}
+
+.progressbox {
+    & {
+        background: #0f0f0f;
+        color: #f0f0f0;
+
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 8px;
+        min-width: 400px;
+        min-height: 70px;
+
+        font-family: "Iosevka Nerd Font";
+        font-size: 14px;
+        font-variant: normal;
+        margin-top: 20px;
+    }
+
+    .progress {
+        scale trough {
+            all: unset;
+            background-color: #4c4c4c;
+            border-radius: 50px;
+            min-height: 6px;
+            min-width: 240px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+
+        scale trough highlight {
+            all: unset;
+            background-color: #ac8aac;
+            border-radius: 10px;
+        }
+    }
+}
+
+.controlbox {
+    & {
+        background: #0f0f0f;
+        min-width: 70px;
+        margin-left: 20px;
+        border-radius: 8px;
+    }
+
+    .control {
+        font-size: 45px;
+        margin-bottom: -25px;
+    }
+
+    .last {
+        margin-bottom: 0;
+    }
+}
+
+.screen {
+    background: rgba(76, 76, 76, 0.6);
+}
+
+.volumebox {
+    & {
+        background: #0f0f0f;
+        min-width: 250px;
+        min-height: 80px;
+        border-radius: 8px;
+        margin-right: 20px;
+    }
+
+    .volume {
+        .label {
+            font-size: 44px;
+        }
+
+        scale trough {
+            all: unset;
+            background-color: #4c4c4c;
+            border-radius: 50px;
+            min-height: 5px;
+            min-width: 160px;
+            margin-left: 10px;
+        }
+
+        scale trough highlight {
+            all: unset;
+            background-color: #8aacab;
+            border-radius: 50px;
+        }
+    }
+}
+
+.statbox {
+    & {
+        background: #0f0f0f;
+        border-radius: 8px;
+        min-width: 220px;
+    }
+
+    .label {
+        font-size: 44px;
+        margin-right: 10px;
+    }
+
+    .stat {
+        font-size: 14px;
+    }
+
+    .first {
+        margin-right: 20px;
+    }
+
+    .cpu {
+        color: #8f8aac;
+    }
+
+    .ram {
+        color: #c6a679
+    }
+}
+
+.right {
+    margin-left: 20px;
+}
+
+.face {
+    background-size: 180px;
+    min-height: 175px;
+    min-width: 175px;
+    border-radius: 8px;
+}
+
+.namebox {
+    & {
+        min-height: 40px;
+        min-width: 175px;
+        background: #0f0f0f;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+
+    .name {
+        font-size: 14px;
+    }
+}
+
+.facegroup {
+    margin-right: 20px;
+}
+
+.button {
+    & {
+        all:unset;
+        margin-right: 15px;
+        background: #0f0f0f;
+        border-radius: 8px;
+        min-width: 57px;
+        font-size: 24px;
+        transition: 300ms ease;
+    }
+
+    &:hover {
+        color: #f0f0f0;
+    }
+}
+
+.buttongroup {
+    margin-bottom: 10px;
+    margin-right: -17px;
+    min-height: 47px;
+}
+
+.sleep {
+    & {
+        color: #aca98a;
+    }
+
+    &:hover {
+        background: #aca98a;
+    }
+}
+
+
+.lock {
+    & {
+        color: #8aacab;
+    }
+
+    &:hover {
+        background: #8aacab;
+    }
+}
+
+.nightmode {
+    & {
+        color: #c6a679;
+        font-size: 28px;
+    }
+
+    &:hover {
+        background: #c6a679;
+    }
+}
+
+.reboot {
+    & {
+        color: #8aac8b;
+    }
+
+    &:hover {
+        background: #8aac8b;
+    }
+}
+
+.shutdown {
+    & {
+        color: #ac8a8c;
+    }
+
+    &:hover {
+        background: #ac8a8c;
+    }
+}
+
+.logout {
+    & {
+        color: #8f8aac;
+    }
+
+    &:hover {
+        background: #8f8aac;
+    }
+}
+
+.leavebutton{
+    all: unset;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+    background: #191919;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.altbutton {
+    & {
+        all: unset;
+        background: #0f0f0f;
+        border-radius: 8px;
+        min-height: 59px;
+        min-width: 70px;
+        transition: 300ms ease;
+        font-size: 36px;
+    }
+    
+    &:hover {
+        color: #f0f0f0;
+    }
+}
+
+.exit {
+    & {
+        margin-bottom: 10px;
+        color: #ac8a8c;
+    }
+
+    &:hover {
+        background: #ac8a8c;
+    }
+}
+
+.refresh {
+    & {
+        color: #ac8aac;
+    }
+
+    &:hover {
+        background: #ac8aac;
+    }
+}
+
+.altbuttongroup {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.launchbuttongroup {
+    min-height: 65px;
+    min-width: 395px;
+    margin-top: 20px;
+    margin-right: -22px;
+}
+
+.launchbutton {
+    & {
+        all:unset;
+        background: #0f0f0f;
+        min-width: 117px;
+        min-height: 60px;
+        border-radius: 8px;
+        color: #cacaca;
+        font-size: 48px;
+        transition: 300ms ease;
+        margin-right: 22px;
+    }
+
+    &:hover {
+        color: #0f0f0f;
+    }
+}
+
+.bluetooth {
+    &{
+        font-size: 32px;
+    }
+
+    &:hover {
+        background: #8aacab;
+    }
+}
+
+.apps {
+    &:hover {
+        background: #8aac8b;
+    }
+}
+
+.wifi {
+    &:hover {
+        background: #c6a679;
+    }
+}
+
+.home {
+    &:hover {
+        background: #aca98a;
+    }
+}
+
+.results {
+    & {
+        min-height: 290px;
+    }
+
+    button {
+        all: unset;
+        min-height: 48px;
+        background: #0f0f0f;
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+}
+
+.search {
+    all: unset;
+    padding-left: 10px;
+    font-size: 16px;
+    color: #cacaca;
+    min-width: 385px;
+    min-height: 63px;
+    background: #0f0f0f;
+    border-radius: 8px;
+}

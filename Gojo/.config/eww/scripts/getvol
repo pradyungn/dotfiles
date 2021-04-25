@@ -1,0 +1,3 @@
+#!/bin/sh
+# Added a cut statement to the end to fix the two-value output.
+amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%' | cut -f1 -d$'\n'

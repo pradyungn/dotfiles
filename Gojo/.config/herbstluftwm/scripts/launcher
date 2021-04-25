@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ "$(eww windows)" == *"*launcher"* ]]; then
+    eww close launcher;
+else
+    eww open launcher
+fi

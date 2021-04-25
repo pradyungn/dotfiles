@@ -1,0 +1,7 @@
+<box orientation="v" class="results" space-evenly="false">
+<button onclick='alacritty &amp;'>Alacritty</button>
+<button onclick='android-file-transfer &amp;'>Android File Transfer (MTP)</button>
+<button onclick='android-studio %f &amp;'>Android Studio</button>
+<button onclick='arandr &amp;'>ARandR</button>
+<button onclick='assistant &amp;'>Qt Assistant</button>
+</box>

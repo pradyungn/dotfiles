@@ -1,0 +1,4 @@
+#!/bin/bash
+
+herbstclient split $1 $(cat ~/.config/herbstluftwm/ratio)
+echo 0.5 > ~/.config/herbstluftwm/ratio

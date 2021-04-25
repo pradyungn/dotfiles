@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#  ____  _   _ 
+# |  _ \| \ | | Pradyun Narkadamilli
+# | |_) |  \| | https://pradyungn.tech
+# |  __/| |\  | MIT License
+# |_|   |_| \_| Copyright 2021 Pradyun Narkadamilli
+
+~/.config/herbstluftwm/configs/theme
+~/.config/herbstluftwm/configs/keybinds
+~/.config/herbstluftwm/configs/setup

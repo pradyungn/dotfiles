@@ -1,0 +1,11 @@
+#!/bin/bash
+
+  if ! pgrep redshift; then
+        redshift -l $(cat ~/.config/coords) &
+        notify-send "Redshift -- ON"
+  else 
+        pkill redshift
+        notify-send "Redshift -- SHUTTING DOWN"
+        while pgrep redshift; do sleep 1; done
+        notify-send "Redshift -- OFF"
+  fi

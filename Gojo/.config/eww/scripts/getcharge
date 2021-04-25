@@ -1,0 +1,15 @@
+#!/bin/bash
+
+charge=$(cat /sys/class/power_supply/BAT0/capacity)
+
+if [ $(cat /sys/class/power_supply/BAT0/status) = "Discharging" ]; then
+    if [ "$charge" -le 10 ]; then
+        notify-send "Charge the computer dipshit" "You're at $charge%"
+    fi
+else
+    if [ "$charge" -eq 100 ]; then
+        notify-send "You're fully charged" "Pls unplug dis shit"
+    fi
+fi
+
+echo "$charge"
