@@ -1,0 +1,23 @@
+#+TITLE: Dotfiles: Hades
+
+I thought Hades sounded cool. That's the rice's name now. Deal with it.
+
+My /final/ rice during high school, and my setup as of Spring 2021.
+
+* About
+While /Oni/ was a proof-of-concept rice to show off the Mountain colorscheme, test out a new type of bar, and in general embody the "uniform" aesthetic, this rice didn't really have as much planned intent behind it - I just messed around with stuff as I went and uhhhhh yeah here we are.
+
+* Details
++ *OS*: Arch
++ *WM*: herbstluftwm
++ *Compositor*: Picom
++ *Bar*: EWW
++ *GTK*: Mountain
++ *Font*: Iosevka (per usual)
+
+* Preferred Applications
++ *Terminal*: alacritty
++ *File Manager*: Nautilus
++ *Music Player*: NCMPCPP/MPD
++ *Browser*: Qutebrowser
++ *Editor*: Neovim/Doom EMACS
