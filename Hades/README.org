@@ -15,6 +15,14 @@ While /Oni/ was a proof-of-concept rice to show off the Mountain colorscheme, te
 + *GTK*: Mountain
 + *Font*: Iosevka (per usual)
 
+* Disclaimers/Warnings/I'm an Idiot
+** Launcher
+Yes, I'm aware that it breaks on every single system that isn't mine. This seems to be because my stupid butt used random icons that I pulled off of gucharmap without checking which font they were from - therefore there's a lot of non-standard icons floating in my launcher config. If you want to use my launcher, run it once, check which icons aren't rendering comparative to the screenshots, and then substitute those with Nerd Font icons.
+** Themes
+There's probably some confusion over why my themes are nowhere to be found. I'm gonna take this opportunity to shamelessly plug my colorscheme - Mountain. The Mountain repo should have all the themes that I used in this rice, and I don't want to convolute stuff by reuploading everything here. Please, submit a pull request or an issue if you find that I'm missing an important file.
+
+[[https://github.com/pradyungn/Mountain][Mountain]]
+
 * Preferred Applications
 + *Terminal*: alacritty
 + *File Manager*: Nautilus
