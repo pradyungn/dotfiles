@@ -1,0 +1,9 @@
+[package]
+name = "mpris_data"
+version = "0.1.0"
+authors = ["Pradyun Narkadamilli <pradyungn@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+mpris = "1.1.2"
+reqwest = {version="0.11.3", features = ["blocking"]}
