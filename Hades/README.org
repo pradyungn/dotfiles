@@ -1,6 +1,6 @@
 #+html: <div align="center"><img src="./img/main.png"/></div>
 
-#+html: <div align="center"><h1>Dotfiles: Hades</h1</div>
+#+html: <div align="center"><h1>Dotfiles: Hades</h1></div>
 #+html: <div align="center"><h3> I thought Hades sounded cool. That's the rice's name now. Deal with it. </h3></div>
 
 * About
