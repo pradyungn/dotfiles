@@ -1,11 +1,3 @@
-//  ____  _   _ 
-// |  _ \| \ | | Pradyun Narkadamilli
-// | |_) |  \| | https://pradyungn.tech
-// |  __/| |\  | MIT License
-// |_|   |_| \_| Copyright 2021 Pradyun Narkadamilli
-
-// This thing basically does all the work in terms of extracting/formatting the data from
-// Spotify/MPD
 use mpris::PlayerFinder;
 use reqwest::blocking::get;
 use std::env;
@@ -82,9 +74,13 @@ fn print_metadata(name: Option<&str>) -> Option<[String; 3]> {
                     singstr = newsingers;
                 }
 
-                let mut file =
-                    File::create("/home/pradyungn/.config/eww/artist.txt").expect("create failed");
-                file.write(singstr.as_bytes()).expect("write failed");
+                singstr = format!("xml=\"{}\"", singstr);
+
+                let _ = Command::new("eww")
+                    .arg("update")
+                    .arg(&singstr)
+                    .spawn();
+
             } else {
                 singstr = std::fs::read_to_string("/home/pradyungn/.config/eww/data/mpartist")
                     .expect("Oopsies!!!");
@@ -104,9 +100,11 @@ fn print_metadata(name: Option<&str>) -> Option<[String; 3]> {
                     singstr = newsingers;
                 }
 
-                let mut file =
-                    File::create("/home/pradyungn/.config/eww/artist.txt").expect("create failed");
-                file.write(singstr.as_bytes()).expect("write failed");
+                singstr = format!("artist={}", singstr);
+                let _ = Command::new("eww")
+                    .arg("update")
+                    .arg(&singstr)
+                    .spawn();
 
                 if title.chars().count() > 25 as usize {
                     let mut newtitle = String::new();
@@ -124,30 +122,15 @@ fn print_metadata(name: Option<&str>) -> Option<[String; 3]> {
 
             let duration = metadata.length().unwrap().as_secs();
 
-            let mut file =
-                File::create("/home/pradyungn/.config/eww/data/duration").expect("create failed");
-            file.write(format!("{}", duration).as_bytes())
-                .expect("write failed");
-
             let position = player.get_position().unwrap().as_secs();
-            file =
-                File::create("/home/pradyungn/.config/eww/data/position").expect("create failed");
-            file.write(format!("{}", &position).as_bytes())
-                .expect("write failed");
 
-            file = File::create("/home/pradyungn/.config/eww/data/displayduration")
-                .expect("create failed");
             let seconds = duration % 60;
             if seconds < 10 {
                 displaydur = format!("{}:0{}", duration / 60, seconds);
             } else {
                 displaydur = format!("{}:{}", duration / 60, seconds);
             }
-            file.write(format!("{}", displaydur).as_bytes())
-                .expect("write failed");
 
-            file =
-                File::create("/home/pradyungn/.config/eww/data/displaypos").expect("create failed");
             let seconds = &position % 60;
             let displsec: String;
             if seconds < 10 {
@@ -155,12 +138,17 @@ fn print_metadata(name: Option<&str>) -> Option<[String; 3]> {
             } else {
                 displsec = format!("{}", seconds)
             }
-            file.write(format!("{}:{}", &position / 60, displsec).as_bytes())
-                .expect("write failed");
 
             let status = format!("{:#?}", player.get_playback_status().unwrap());
-            file = File::create("/home/pradyungn/.config/eww/data/status").expect("create failed");
-            file.write(status.as_bytes()).expect("write failed");
+
+            let _ = Command::new("eww")
+                .arg("update")
+                .arg(format!("playing={}", status))
+                .arg(format!("duration={}", duration))
+                .arg(format!("displaypos={}:{}", &position / 60, displsec))
+                .arg(format!("displaydur={}", displaydur))
+                .arg(format!("position={}", position))
+                .spawn();
 
             if name == "Music Player Daemon" {
                 let url = match metadata.art_url() {
@@ -186,24 +174,18 @@ fn print_metadata(name: Option<&str>) -> Option<[String; 3]> {
             return Some([title, singstr, displaydur]);
         }
     }
-    let mut file = File::create("/home/pradyungn/.config/eww/artist.txt").expect("create failed");
-    file.write(b"").expect("write failed");
 
-    file = File::create("/home/pradyungn/.config/eww/title.txt").expect("create failed");
-    file.write(b"Nothing playing right now...")
-        .expect("write failed");
+    let _ = Command::new("eww")
+        .arg("update")
+        .arg("artist=")
+        .arg("title=Nothing playing right now...")
+        .arg("duration=0")
+        .arg("position=0")
+        .arg("displaydur=")
+        .arg("displaypos=")
+        .arg("playing=Playing")
+        .spawn();
 
-    file = File::create("/home/pradyungn/.config/eww/data/duration").expect("create failed");
-    file.write(b"").expect("write failed");
-
-    file = File::create("/home/pradyungn/.config/eww/data/position").expect("create failed");
-    file.write(b"").expect("write failed");
-
-    file = File::create("/home/pradyungn/.config/eww/data/displayduration").expect("create failed");
-    file.write(b"").expect("write failed");
-
-    file = File::create("/home/pradyungn/.config/eww/data/displaypos").expect("create failed");
-    file.write(b"").expect("write failed");
     return None;
 }
 

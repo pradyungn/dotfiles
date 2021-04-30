@@ -215,19 +215,19 @@ contain are defined. -->
         </def>
 
         <def name="apps">
-            <button class="apps launchbutton" onclick="echo 'apps' > ~/.config/eww/data/activeleft" visible="{{active!='apps'}}"></button>
+            <button class="apps launchbutton" onclick="eww update active='apps'" visible="{{active!='apps'}}"></button>
         </def>
 
         <def name="home">
-            <button class="home launchbutton" onclick="echo 'default' > ~/.config/eww/data/activeleft" visible="{{active!='default'}}"></button>
+            <button class="home launchbutton" onclick="eww update active='default'" visible="{{active!='default'}}"></button>
         </def>
 
         <def name="wifi">
-            <button class="wifi launchbutton" onclick="echo 'wifi' > ~/.config/eww/data/activeleft" visible="{{active!='wifi'}}">直</button>
+            <button class="wifi launchbutton" onclick="eww update active='wifi'" visible="{{active!='wifi'}}">直</button>
         </def>
 
         <def name="bluetooth">
-            <button class="bluetooth launchbutton" onclick="echo 'bluetooth' > ~/.config/eww/data/activeleft" visible="{{active!='bluetooth'}}"></button>
+            <button class="bluetooth launchbutton" onclick="eww update active='bluetooth'" visible="{{active!='bluetooth'}}"></button>
         </def>
 
         <def name="sleep">
@@ -313,19 +313,18 @@ contain are defined. -->
 
     <variables>
         <!--What's Active?-->
-        <script-var name="init_active" interval="10000s">echo 'default' > ~/.config/eww/data/activeleft; ~/.config/eww/scripts/ewwmenu;</script-var>
-        <script-var name="active" interval="500ms">cat ~/.config/eww/data/activeleft</script-var>
-        <script-var name="buttonxml" interval="500ms">cat ~/.config/eww/data/buttonxml</script-var>
+        <var name="active">default</var>
+        <var name="buttonxml">mbruh</var>
 
         <!-- Music vars -->
         <script-var name="music" interval="500ms">~/.config/eww/scripts/gettitle</script-var>
-        <script-var name="artist" interval="500ms">cat ~/.config/eww/artist.txt</script-var>
+        <var name="artist"></var>
+        <var name="duration"></var>
+        <var name="position"></var>
+        <var name="displaydur"></var>
+        <var name="displaypos"></var>
+        <var name="playing"></var>
         <script-var name="impath" interval="500ms">echo "/home/pradyungn/.config/eww/temp.jpg"</script-var>
-        <script-var name="duration" interval="500ms">cat ~/.config/eww/data/duration</script-var>
-        <script-var name="position" interval="500ms">cat ~/.config/eww/data/position</script-var>
-        <script-var name="displaypos" interval="500ms">cat ~/.config/eww/data/displaypos</script-var>
-        <script-var name="displaydur" interval="500ms">cat ~/.config/eww/data/displayduration</script-var>
-        <script-var name="playing" interval="500ms">cat ~/.config/eww/data/status</script-var>
 
         <!--Volume var-->
         <script-var name="volume" interval="500ms">~/.config/eww/scripts/getvol</script-var>
@@ -350,12 +349,12 @@ contain are defined. -->
 
         <!-- Weather Data -->
         <script-var name="sky" interval="10m">~/.config/eww/scripts/weather;</script-var>
-        <script-var name="temp" interval="10m">sleep 3; cat ~/.config/eww/data/temp;</script-var>
-        <script-var name="feeling" interval="10m">sleep 3; cat ~/.config/eww/data/feeling</script-var>
-        <script-var name="humidity" interval="10m">sleep 3; cat ~/.config/eww/data/humidity</script-var>
-        <script-var name="wind" interval="10m">sleep 3; cat ~/.config/eww/data/wind</script-var>
-        <script-var name="sky_icon" interval="10m">sleep 3; cat ~/.config/eww/data/icon</script-var>
-        <script-var name="sky_icon_code" interval="10m">sleep 3; cat ~/.config/eww/data/icon_code</script-var>
+        <var name="temp"></var>
+        <var name="feeling"></var>
+        <var name="humidity"></var>
+        <var name="wind"></var>
+        <var name="sky_icon"></var>
+        <var name="sky_icon_code"></var>
     </variables>
 
     <windows>

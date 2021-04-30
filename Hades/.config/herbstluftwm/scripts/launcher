@@ -3,5 +3,6 @@
 if [[ "$(eww windows)" == *"*launcher"* ]]; then
     eww close launcher;
 else
+    eww update active="default"
     eww open launcher
 fi

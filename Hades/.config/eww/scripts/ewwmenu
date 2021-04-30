@@ -5,7 +5,7 @@ count=5
 format=$(cat ~/.config/eww/data/ewwmenu_config | grep -m 1 -oP "(?<=Format=).*")
 s=0
 
-echo '<box orientation="v" class="results" space-evenly="false">' > ~/.config/eww/data/buttonxml
+xml='<box orientation="v" class="results" space-evenly="false">'
 if [[ $1!="" ]]; then
     for i in $(ls /usr/share/applications/ | grep -i "$1" | grep ".*.desktop"); do
         if [[ $s -eq $count ]]; then
@@ -16,12 +16,11 @@ if [[ $1!="" ]]; then
         comment=$(echo "$elem" | grep -m 1 -oP "(?<=GenericName=).*")
         execute=($(echo "$elem" | grep -m 1 -oP "(?<=Exec=).*")" &")
         final="$(eval "echo $format")"
-        echo "${final//\&/\&amp;}" >> ~/.config/eww/data/buttonxml
+        xml+="${final//\&/\&amp;}"
         let "s+=1"  
     done
 else
     for i in $(cat .config/ewwmenu/default); do
-        echo $i
         if [[ $s -eq $count ]]; then
             break 1
         fi
@@ -29,8 +28,9 @@ else
         comment=$(cat "$i" | grep -m 1 -oP "(?<=GenericName=).*")
         execute=($(cat "$i" | grep -m 1 -oP "(?<=Exec=).*")" &")
         final="$(eval "echo $format")"
-        echo "${final//\&/\&amp;}"
+        xml+="${final//\&/\&amp;}"
         let "s+=1"  
     done
 fi
-echo '</box>' >> ~/.config/eww/data/buttonxml
+xml+="</box>"
+eww update buttonxml="$xml"

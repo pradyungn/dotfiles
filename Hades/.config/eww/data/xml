@@ -1,3 +1,0 @@
-<box orientation="v" class="results" space-evenly="false">
-    <button onclick="alacritty &amp;"> Alacritty </button>
-</box>
