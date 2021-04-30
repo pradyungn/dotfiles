@@ -1,6 +1,10 @@
 #+TITLE: Dotfiles: Hades
 
+#+html: <div align="center"><img src="./img/main.png"/></div>
+
+#+begin_quote
 I thought Hades sounded cool. That's the rice's name now. Deal with it.
+#+end_quote
 
 My /final/ rice during high school, and my setup as of Spring 2021.
 
