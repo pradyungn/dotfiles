@@ -1,14 +1,11 @@
-#+TITLE: Dotfiles: Hades
-
 #+html: <div align="center"><img src="./img/main.png"/></div>
 
-#+begin_quote
-I thought Hades sounded cool. That's the rice's name now. Deal with it.
-#+end_quote
-
-My /final/ rice during high school, and my setup as of Spring 2021.
+#+html: <div align="center"><h1>Dotfiles: Hades</h1</div>
+#+html: <div align="center"><h3> I thought Hades sounded cool. That's the rice's name now. Deal with it. </h3></div>
 
 * About
+My /final/ rice during high school, and my setup as of Spring 2021.
+
 While /Oni/ was a proof-of-concept rice to show off the Mountain colorscheme, test out a new type of bar, and in general embody the "uniform" aesthetic, this rice didn't really have as much planned intent behind it - I just messed around with stuff as I went and uhhhhh yeah here we are.
 
 * Details
