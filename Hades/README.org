@@ -29,3 +29,28 @@ There's probably some confusion over why my themes are nowhere to be found. I'm 
 + *Music Player*: NCMPCPP/MPD
 + *Browser*: Qutebrowser
 + *Editor*: Neovim/Doom EMACS
+
+* Acknowledgements
++ As always, gotta thank [[https://github.com/sohamb117][@sohamb117]] for helping out :) He initially prototyped the ewwmenu script in the EWW directory +and then I changed a couple lines and called it mine+. He also helped me mock up the rice in Figma. Thanks for everything :D
++ Thanks to [[https://github.com/elkowar][elkowar]] for not only making EWWW, but fielding so many of my questions late at night. He was invaluable in getting started with and optimizing my more janky EWW stuff.
+
+* Explaining Stuff That's Weird
+**  Herbstluftwm
+There's two main things that I'd need to explain here - why there are multiple files, and what the "ratio" crap in my config is.
+
+The multiple files in my config is pretty self-explanatory - to make my config more manageable, I split all the commands/setup stuff into 4 categories and each category got its own file. I hope that this distinction makes certain settings and modifications easier to find/perform.
+
+The "ratio" file is a bit harder to explain. If you're coming from BSPWM or have used it in the past, you likely know that BSPWM lets you apply "split ratios" - ratios that affect the ratio of window A to window B during a binary split. By contrast. herbstluftwm doesn't inherently have that functionality, and for good reason - it operates off of the binary organization of dynamically tiled domains called "frames". However, I still wanted to emulate the BSPWM behavior to make transition easier and layouts more powerful.
+
+As such, there is some code in the keybinds directory that allows you to specify the split ratio when making a new frame in a workspace. Pretty cool, right? +I know it's not just let me inflate my ego ok+
+
+** Music Telemetry
+In order to be able to capture and display the status/metadata of songs in my EWW-based launcher, it's necessary to actually CAPTURE that data somehow. As time has passed, I've tried to make this system more and more painless.
+
+At the moment the actual calls are as follows - every 500ms, EWW calls upon a bash script in the scripts directory. That bash script determines whether we need the MPD metadata or the Spotify metadata and dynamically supplies that information as an argument to my rust tool, mpris_data. You're going to need to compile this binary for yourself with your directories substituted in. Nothing too painful. In the future I'm hoping to read the processes from within rust itself so that I can get rid of the bash middleman.
+
+That being said, I also wanted notifications for song-changes with MPD. To do this, I created a daemon service in C called mpdnot to attach to my MPD server and then call the notifcation function in mpris_data on song change. It also writes the current artist/title of song to two files in the EWW directory in order to solve some compatibility issues I was having earlier on - that being you could get away with just extracting the song/title from the metadata, and eventually I might just do that. Who knows!
+
+#+begin_quote
+Disclaimer: The mpris_data script is currently having issues extracting position from Spotify's MPRIS presence because Spotify's shitty. Sorry about that :/
+#+end_quote
