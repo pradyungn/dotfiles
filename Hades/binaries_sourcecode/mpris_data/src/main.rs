@@ -74,7 +74,7 @@ fn print_metadata(name: Option<&str>) -> Option<[String; 3]> {
                     singstr = newsingers;
                 }
 
-                singstr = format!("xml=\"{}\"", singstr);
+                singstr = format!("artist={}", singstr);
 
                 let _ = Command::new("eww")
                     .arg("update")
