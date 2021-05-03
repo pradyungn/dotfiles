@@ -333,7 +333,7 @@ contain are defined. -->
         <script-var name="min" interval="10s">date "+%M"</script-var>
         <script-var name="hour" interval="1m">date "+%H"</script-var>
 
-        <script-var name="date" interval="10m">date | cut -d " " -f 2-3</script-var>
+        <script-var name="date" interval="10m">date | cut -d " " -f 2-4</script-var>
         <script-var name="day" interval="10m">date | cut -d " " -f 1</script-var>
 
         <!--utilization vars-->

@@ -406,7 +406,8 @@ button {
 }
 
 .screen {
-    background: rgba(76, 76, 76, 0.6);
+    background: rgba(38, 38, 38, 0.6);
+    animation: open 0.5s;
 }
 
 .volumebox {
@@ -710,4 +711,14 @@ button {
     min-height: 63px;
     background: #0f0f0f;
     border-radius: 8px;
+}
+
+// Keyframes
+@keyframes open {
+    from {
+        opacity: 0.0;
+    }
+    to {
+        opacity: 1.0;
+    }
 }
