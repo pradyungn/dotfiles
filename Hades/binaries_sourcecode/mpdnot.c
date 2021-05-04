@@ -1,6 +1,6 @@
 //  ____  _   _ 
 // |  _ \| \ | | Pradyun Narkadamilli
-// | |_) |  \| | https://pradyungn.tech
+// | |_) |  \| | https://pradyun.tech
 // |  __/| |\  | MIT License
 // |_|   |_| \_| Copyright 2021 Pradyun Narkadamilli
 
