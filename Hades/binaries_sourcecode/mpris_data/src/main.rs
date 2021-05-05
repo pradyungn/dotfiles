@@ -100,10 +100,9 @@ fn print_metadata(name: Option<&str>) -> Option<[String; 3]> {
                     singstr = newsingers;
                 }
 
-                singstr = format!("artist={}", singstr);
                 let _ = Command::new("eww")
                     .arg("update")
-                    .arg(&singstr)
+                    .arg(format!("artist={}", singstr))
                     .spawn();
 
                 if title.chars().count() > 25 as usize {
