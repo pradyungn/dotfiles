@@ -5,12 +5,38 @@ contain are defined. -->
     <definitions>
         <!-- This is the place where you structure your widgets, align them and stuff. -->
         <def name="bar">
-            <box class="bar-container" orientation="h">
+            <box class="bar-container" orientation="h" visible="{{bartype=='default'}}">
                 <box class="bar" orientation="h" hexpand="false" vexpand="false">
                     <left/>
                     <workspaces/>
                     <right/>
                 </box>
+            </box>
+        </def>
+
+        <def name="tilebar">
+            <box class="tilebar-container" orientation="h" visible="{{bartype=='tiled'}}">
+                <box class="tilebar" orientation="h" hexpand="false" vexpand="false">
+                    <windowname/>
+                    <dotworkspaces/>
+                    <tileright/>
+                </box>
+            </box>
+        </def>
+
+        <def name="windowbar">
+            <box class="windowbar" orientation="h" hexpand="false" vexpand="false">
+                <windowname/>
+            </box>
+        </def>
+
+        <def name="tileright">
+            <box class="right" orientation="h" space-evenly="false" halign="end">
+                <slider-vol/>
+                <slider-light/>
+                <slider-bat/>
+                <slider-ram/>
+                <time/>
             </box>
         </def>
 
@@ -29,6 +55,12 @@ contain are defined. -->
             </box>
         </def>
 
+        <def name="windowname">
+            <box orientation="h" space-evenly="false" halign="center" valign="center">
+                <literal content="{{winxml}}"></literal>
+            </box>
+        </def>
+
         <def name="workspaces">
             <box orientation="h" class="workspaces" space-evenly="true" halign="center"> <!-- Your workspaces.-->
                 <button onclick="wmctrl -s 0">一</button>
@@ -36,6 +68,16 @@ contain are defined. -->
                 <button onclick="wmctrl -s 2">三</button> 
                 <button onclick="wmctrl -s 3">四</button>
                 <button onclick="wmctrl -s 4">五</button>
+            </box>
+        </def>
+
+        <def name="dotworkspaces">
+            <box orientation="h" class="workspaces" space-evenly="true" halign="center"> <!-- Your workspaces.-->
+                <button onclick="wmctrl -s 0">{{if activespace!=0 then "" else ""}}</button>
+                <button onclick="wmctrl -s 1">{{if activespace!=1 then "" else ""}}</button>
+                <button onclick="wmctrl -s 2">{{if activespace!=2 then "" else ""}}</button> 
+                <button onclick="wmctrl -s 3">{{if activespace!=3 then "" else ""}}</button>
+                <button onclick="wmctrl -s 4">{{if activespace!=4 then "" else ""}}</button>
             </box>
         </def>
 
@@ -209,7 +251,7 @@ contain are defined. -->
             <box class="namebox" space-evenly="true">
                 <box orientation="h" class="name" space-evenly="false" halign="center" valign="center">
                     <box class="bold">pradyungn</box>
-                    <box>/Oni</box>
+                    <box>/Hades</box>
                 </box>
             </box>
         </def>
@@ -315,6 +357,7 @@ contain are defined. -->
         <!--What's Active?-->
         <var name="active">default</var>
         <var name="buttonxml">mbruh</var>
+        <var name="bartype">default</var>
 
         <!-- Music vars -->
         <script-var name="music" interval="500ms">~/.config/eww/scripts/gettitle</script-var>
@@ -333,7 +376,7 @@ contain are defined. -->
         <script-var name="min" interval="10s">date "+%M"</script-var>
         <script-var name="hour" interval="1m">date "+%H"</script-var>
 
-        <script-var name="date" interval="10m">date | cut -d " " -f 2-4</script-var>
+        <script-var name="date" interval="10m">date | cut -d " " -f 2-3</script-var>
         <script-var name="day" interval="10m">date | cut -d " " -f 1</script-var>
 
         <!--utilization vars-->
@@ -355,14 +398,27 @@ contain are defined. -->
         <var name="wind"></var>
         <var name="sky_icon"></var>
         <var name="sky_icon_code"></var>
+
+        <!-- Bar -->
+        <script-var name="activespace" interval="20ms">wmctrl -d | grep -w '*' | cut -d ' ' -f 1 && ~/.config/eww/scripts/windowxml</script-var>
+        <var name="winxml">hola</var>
     </variables>
 
     <windows>
         <window name="bar" screen="0" stacking="bg">
-            <geometry anchor= "top left" x="25%" y="20px" width="50%" height="4%"/> <!--Specifies geometry-->
-            <reserve side="top" distance="4%"/>
+            <geometry anchor= "top left" y="20px"/> <!--Specifies geometry-->
             <widget>
-                <bar/>
+                <box>
+                    <bar/>
+                    <tilebar/>
+                </box>
+            </widget>
+        </window>
+
+        <window name="windowbar" screen="0" stacking="bg">
+            <geometry anchor= "bottom left" y="0" x="0"/>
+            <widget>
+                <windowbar/>
             </widget>
         </window>
 

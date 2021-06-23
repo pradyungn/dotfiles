@@ -25,6 +25,45 @@ button {
         font-family: Iosevka Nerd Font;
         font-variant: normal;
         border-radius: 8px;
+        min-width: 960px;
+        margin-left: 480px;
+        min-height: 45px;
+    }
+}
+
+
+.tilebar-container {
+    .tilebar {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    & {
+        background-color: #0f0f0f;
+        color: #f0f0f0;
+        font-family: Iosevka Nerd Font;
+        font-variant: normal;
+        border: 5px solid #262626;
+        min-width: 1870px;
+        margin-left: 20px;
+        min-height: 45px;
+    }
+}
+
+.windowbar {
+    & {
+        margin-left: 20px;
+        margin-bottom:20px;
+    }
+
+    .windows {
+        .active {
+            background: #262626;
+        }
+
+        button {
+            margin-right: 5px;
+        }
     }
 }
 
@@ -37,8 +76,7 @@ button {
     all: unset;
     background-color: #4c4c4c;
     border-radius: 50px;
-    min-height: 3px;
-    min-width: 50px;
+    min-height: 3px; min-width: 50px;
     margin-left: 10px;
     margin-right: 20px;
 }
