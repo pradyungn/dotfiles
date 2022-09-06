@@ -63,8 +63,8 @@ for boomer in {1..9}; do
 done
 
 # frame invisibility toggle
-hc keybind $Mod-v set frame_bg_transparent toggle
-
+hc keybind $Mod-v spawn ~/.config/herbstluftwm/scripts/framer 5
+hc keybind $Mod-Shift-v spawn ~/.config/herbstluftwm/scripts/framer 20
 
 # let the current frame explode into subframes
 hc keybind $Mod-Ctrl-space split explode
@@ -159,9 +159,10 @@ hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume @DEFAULT_SINK@ -5%
 hc keybind $Mod-Shift-9 spawn pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 # screenshots
-hc keybind Print spawn scrot -e 'mv $f ~/Pictures/Screenshots'
+hc keybind Print spawn flameshot gui
+# hc keybind Print spawn scrot -s -e 'xclip -selection clipboard -t image/png -i $f; rm $f'
+hc keybind Shift-Print spawn scrot -e 'mv $f ~/Pictures/Screenshots'
 hc keybind $Mod-Print spawn scrot -u -b -e 'mv $f ~/Pictures/Screenshots'
-hc keybind $Mod-Ctrl-Print spawn flameshot gui
 
 # applications
 hc keybind $Mod-1 spawn discord
@@ -171,6 +172,8 @@ hc keybind $Mod-4 spawn "${TERMINAL:-xterm}" -e 'gotop'
 hc keybind $Mod-5 spawn "${TERMINAL:-xterm}" -e 'ncmpcpp'
 
 hc keybind $Mod-n spawn notion-app-nativefier
+hc keybind $Mod-Shift-n spawn typora
+hc keybind $Mod-z spawn zathura
 
 hc keybind $Mod-Ctrl-p spawn pavucontrol
 
@@ -178,3 +181,16 @@ hc keybind $Mod-e spawn emacs
 
 # EWW launcher
 hc keybind $Mod-Shift-d spawn ~/.config/herbstluftwm/scripts/launcher
+hc keybind $Mod-Shift-w spawn ~/.config/herbstluftwm/scripts/windowbar
+hc keybind $Mod-Ctrl-s spawn ~/.config/herbstluftwm/scripts/remotespt
+
+# Toggling functionality of laptop keyboard (without the weird terminal history completion)
+hc keybind $Mod-Ctrl-d spawn xinput set-prop 'AT Translated Set 2 keyboard' 'Device Enabled' 0
+hc keybind $Mod-Ctrl-e spawn xinput set-prop 'AT Translated Set 2 keyboard' 'Device Enabled' 1
+
+hc keybind $Mod-Alt-s spawn pkill spt
+
+hc keybind $Mod-Ctrl-c spawn ~/.config/herbstluftwm/scripts/wpgen
+hc keybind $Mod-Alt-c spawn ~/.config/herbstluftwm/scripts/wpgen custom
+
+hc keybind $Mod-Alt-r spawn ~/reset

@@ -1,7 +1,14 @@
 #!/bin/bash
 
-if ! pgrep spotify; then 
-    playerctl $1
-else 
+declare -A sptcmd=( ["play-pause"]="--toggle" ["pause"]="--toggle" ["play"]="--toggle" ["next"]="--next" ["previous"]="--previous")
+
+if pgrep -x spt || [ "$(cat ~/.config/herbstluftwm/remotestat)" -eq 1 ]; then 
+    playerctl --player=mpd pause
+    spt pb -d Mercury "${sptcmd[$1]}"
+elif pgrep -x spotify; then
+    playerctl --player=mpd pause
     playerctl --player=spotify $1
+else
+    playerctl --player=spotify pause
+    playerctl --player=mpd $1
 fi

@@ -1,38 +1,38 @@
 #!/bin/sh
 
-i3lock --nofork                 	\
+i3lock --nofork -L                	\
     --ignore-empty-password		\
     \
     --indicator				\
     --bar-indicator			\
-    --bar-position="1070"		\
+    --bar-pos="1070"		\
     --bar-base-width="10"		\
     --bar-orientation=horizontal	\
     --bar-color=0f0f0f			\
-    --ringvercolor=8aac8b		\
-    --ringwrongcolor=ac8a8c		\
-    --bshlcolor=ac8a8c			\
-    --keyhlcolor=aca98a			\
+    --ringver-color=8aac8b		\
+    --ringwrong-color=ac8a8c		\
+    --bshl-color=ac8a8c			\
+    --keyhl-color=aca98a			\
     \
     --clock				\
-    --timestr="%I:%M %p"		\
+    --time-str="%I:%M %p"		\
     --time-font="Iosevka"	\
-    --timesize=72			\
-    --timepos="1500:920"		\
-    --timecolor=cacacaff		\
+    --time-size=72			\
+    --time-pos="1500:920"		\
+    --time-color=cacacaff		\
     \
-    --datestr="%A, %d %B"		\
-    --datecolor=cacacaff		\
+    --date-str="%A, %d %B"		\
+    --date-color=cacacaff		\
     --date-font="Iosevka"	\
-    --datesize=64			\
-    --datepos="tx:1020"	\
+    --date-size=64			\
+    --date-pos="tx:1020"	\
     \
     --verif-font="Iosevka"	\
-    --verifsize=72			\
-    --veriftext="Welcome home!"		\
-    --verifcolor=cacacaff   \
+    --verif-size=72			\
+    --verif-text="Processing..."		\
+    --verif-color=cacacaff   \
     --wrong-font="Iosevka"	\
-    --wrongsize=72			\
-    --wrongtext="No Entry!"		\
-    --wrongcolor=cacacaff   \
+    --wrong-size=72			\
+    --wrong-text="No Entry!"		\
+    --wrong-color=cacacaff   \
     --image=/home/pradyungn/Pictures/moon.jpg

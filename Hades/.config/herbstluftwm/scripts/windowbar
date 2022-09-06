@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ "$(eww windows)" == *"*windowbar"* ]]; then
+    eww close windowbar;
+else
+    eww open windowbar
+fi

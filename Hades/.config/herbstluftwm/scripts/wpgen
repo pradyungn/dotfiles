@@ -1,0 +1,62 @@
+#!/bin/python3
+from PIL import Image,ImageDraw, ImageFont
+import os
+import random
+import sys
+
+if len(sys.argv) == 2:
+    if sys.argv[1]=="custom":
+        message = os.popen('rofi -sep "|" -dmenu -i -p \'\' -font "Iosevka Nerd Font 9" -l 0 -location 3 -theme-str "window {width: 15%; y-offset: 20px; x-offset: -20px;}"').read()
+        if message=="":
+            raise Exception("No Message Given")
+    else:
+        message = sys.argv[1]
+
+else:
+    messages= ["Jai Balaiyya", "Taco Tuesday?", "btw I use Arch", "Holy Shit!", "BRUH?", "food.", "i like corn"]
+    message = messages[random.randint(0, 100)%len(messages)]
+home = "/home/pradyungn"
+
+cats = [
+    ['wtfcat', (500,500), (1390, 642), (960, 610)],
+    ['BRUHcat', (600,500), (190, 600), (710, 440)],
+    ['babycat', (880, 500), (520, 600), (710, 440)],
+    ['hmmcat', (725, 750), (490, 335), (710, 440)],
+    ['coolcat', (433, 577), (0, 503), (360, 850)],
+    ['upcat', (540, 800), (815, 280), (710, 385)],
+]
+
+cat = cats[random.randint(0, 100)%len(cats)]
+
+colors = [ "#a39ec4","#c49ea0", "#c4c19e", "#c49ec4", "#ceb188", "#9ec3c4", "#9ec49f", "#A5b4cb" ]
+bgcolor = colors[random.randint(0,len(colors)-1)]
+img = Image.new("RGBA", (1920, 1080), bgcolor)
+curcat = Image.open(home + f"/.config/herbstluftwm/scripts/{cat[0]}.png").convert("RGBA").resize(cat[1], Image.Resampling.LANCZOS)
+
+scrap = Image.new("RGBA", (2000, 800))
+draw = ImageDraw.Draw(scrap, "RGBA")
+draw.rounded_rectangle((0, 0, 2000, 800), fill="#f0f0f0", outline="#0f0f0f", width=24, radius=120)
+font = ImageFont.truetype(home+"/.config/herbstluftwm/scripts/EB_Garamond/static/EBGaramond-Bold.ttf", size=288)
+size = font.getbbox(message)
+sizing = ((2000 - size[2] + size[0])/2, (800-size[3])/2)
+if size[2] - size[0]> 360*4:
+    font = ImageFont.truetype(home+"/.config/herbstluftwm/scripts/EB_Garamond/static/EBGaramond-Regular.ttf", size=288)
+    size = font.getbbox(message)
+    sizing = ((2000 - size[2] + size[0])/2, (800-size[3])/2)
+
+if size[2] - size[0] > 460*4:
+    fsize = 288
+    while size[2] - size[0] > 460*4:
+        fsize -= 8
+        font = ImageFont.truetype(home+"/.config/herbstluftwm/scripts/EB_Garamond/static/EBGaramond-Regular.ttf", size=fsize)
+        size = font.getbbox(message)
+
+    sizing = ((2000 - size[2] + size[0])/2, (800-size[3])/2)
+
+draw.text(sizing, message, font=font, fill="#0f0f0f", align="center")
+scrap = scrap.resize((500, 200), Image.Resampling.LANCZOS)
+img.paste(scrap, cat[3], scrap)
+img.paste(curcat, cat[2], curcat)
+img.save(home+'/.config/herbstluftwm/scripts/catbg.png', "PNG")
+os.system(" feh --bg-scale ~/.config/herbstluftwm/scripts/catbg.png")
+

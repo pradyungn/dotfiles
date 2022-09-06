@@ -19,14 +19,16 @@ hc() {
 wmname LG3D 
 
 # monitor bs
-autorandr --change
 hc detect_monitors
-hc set_attr monitors.0.pad_up 63
+hc set_attr monitors.0.pad_up 65
 
 # touchpad settings
-xinput set-prop "SYNA8004:00 06CB:CD8B Touchpad" "libinput Tapping Enabled" 1
-xinput set-prop "SYNA8004:00 06CB:CD8B Touchpad" "libinput Natural Scrolling Enabled" 1
-xinput set-prop "SYNA8004:00 06CB:CD8B Touchpad" "libinput Click Method Enabled" 0 1
+xinput set-prop "SYNA8004:00 06CB:CD8B Touchpad" \
+    "libinput Tapping Enabled" 1
+xinput set-prop "SYNA8004:00 06CB:CD8B Touchpad" \
+    "libinput Natural Scrolling Enabled" 1
+xinput set-prop "SYNA8004:00 06CB:CD8B Touchpad" \
+    "libinput Click Method Enabled" 0 1
 
 # MPD
 if ! pgrep -u $UID -x mpd >/dev/null; then
@@ -43,23 +45,26 @@ if ! pgrep picom; then
     picom -b
 fi
 
+# if ! pgrep mpd-discord-rpc; then
+    # ~/.local/bin/mpd-discord-rpc &
+# fi
+
 # Starting MPDNot
 if ! pgrep -u $UID -x mpdnot >/dev/null; then
     ~/.config/herbstluftwm/scripts/mpdnot &
 fi
 
-# EWW
-eww daemon
-
-eww open bar
 hc emit_hook reload
 
-xsetroot -solid '#0f0f0f'
-feh --bg-fill ~/Pictures/gojo4k.png
+# EWW
+eww daemon
+eww reload
+
+eww open bar
 
 # rules
 hc unrule -F
-hc rule focus=on # normally focus new clients
+# hc rule focus=on # normally focus new clients
 hc rule floatplacement=smart
 
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
@@ -68,10 +73,19 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc rule class="floating_term" floating=on floatplacement=center
 hc rule class="feh" floating=on floatplacement=center
 hc rule class="Pavucontrol" floating=on floatplacement=center
+hc rule title="Color Picker" floating=on floatplacement=center
 hc rule class="floating_term" floating=on floatplacement=center
 hc rule class="teeny_term" floating=on floatplacement=center
 hc rule title="launcher" floating=on floatplacement=center
 hc set tree_style '╾│ ├└╼─┐'
 
+echo 0 > ~/.config/herbstluftwm/remotestat
+
 # unlock, just to be sure
 hc unlock
+
+# NAS intialization
+# if ping -c 1 1.1.1.1 &> /dev/null; then
+    # curlftpfs -o user="pradyun2@illinois.edu:OrangeOrioleOfTheEast4011" ftp://ftp.box.com ./NAS
+# fi
+

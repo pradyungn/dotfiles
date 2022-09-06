@@ -1,7 +1,9 @@
 #!/bin/bash
 
-if [  "$(pgrep spotify)" ]; then
+if [  "$(pgrep -x spotify)" ]; then
     player="Spotify"
+elif [ "$(pgrep -x spt)" ]; then
+    player="RemoteSpotify"
 else
     player="Music Player Daemon"
 fi

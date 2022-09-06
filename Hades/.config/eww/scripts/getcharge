@@ -3,13 +3,16 @@
 charge=$(cat /sys/class/power_supply/BAT0/capacity)
 
 if [ $(cat /sys/class/power_supply/BAT0/status) = "Discharging" ]; then
-    if [ "$charge" -le 10 ]; then
-        notify-send "Charge the computer dipshit" "You're at $charge%"
+    if [ "$charge" -le 3 ]; then
+        notify-send "NYEHHHHHHHH PANIC MODE" "YOU'RE AT $charge% FIND A SOCKET" -u critical
+
+    elif [ "$charge" -le 10 ]; then
+        notify-send "Charge the compooter soon" "You're at $charge%"
     fi
-else
-    if [ "$charge" -eq 100 ]; then
-        notify-send "You're fully charged" "Pls unplug dis shit"
-    fi
+# else
+    # if [ "$charge" -eq 100 ]; then
+        # notify-send "You're fully charged" "Pls unplug"
+    # fi
 fi
 
 echo "$charge"

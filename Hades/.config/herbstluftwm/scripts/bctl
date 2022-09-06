@@ -7,7 +7,7 @@ import time
 pwr = subprocess.check_output("bluetoothctl show", shell=True)
 pwr = 'Powered: yes' in pwr.decode("utf-8")
 if pwr:
-    dl = subprocess.check_output("bluetoothctl paired-devices", shell=True)
+    dl = subprocess.check_output("bluetoothctl devices Paired", shell=True)
     dl = list(dl.decode("utf-8").strip().split('\n'))
     ds = 'Turn Off Adapter|Pair New Device|'
     for i in dl:

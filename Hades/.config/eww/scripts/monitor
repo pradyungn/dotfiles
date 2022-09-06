@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if ! lsof -i:5900 > /dev/null; then
+    eww close launcher
+    MENU="$(rofi -sep "|" -dmenu -i -p '' -font 'Iosevka Nerd Font 9' -width 10 -lines 4 -location 0 <<< "Right|Left|Above|Below")"
+        case "$MENU" in
+            *Right) ~/.config/eww/scripts/dualmonitor -r;;
+            *Left) ~/.config/eww/scripts/dualmonitor -l;;
+            *Above) ~/.config/eww/scripts/dualmonitor -a;;
+            *Below) ~/.config/eww/scripts/dualmonitor -b;;
+        esac
+else
+    notify-send "This port is currently occupied"
+fi

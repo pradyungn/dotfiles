@@ -26,7 +26,6 @@ button {
         font-variant: normal;
         border-radius: 8px;
         min-width: 960px;
-        margin-left: 480px;
         min-height: 45px;
     }
 }
@@ -444,7 +443,7 @@ button {
 }
 
 .screen {
-    background: rgba(38, 38, 38, 0.6);
+    background: rgba(57, 57, 57, 0.6);
     animation: open 0.5s;
 }
 
@@ -751,6 +750,11 @@ button {
     border-radius: 8px;
 }
 
+.sptbar {
+    margin-left: 25px;
+    margin-top: 30px;
+}
+
 // Keyframes
 @keyframes open {
     from {
@@ -760,3 +764,4 @@ button {
         opacity: 1.0;
     }
 }
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+herbstclient set frame_gap $1
+
+herbstclient set_attr monitors.focus.pad_up $(expr 85 - $1)
+herbstclient set_attr monitors.focus.pad_down $(expr 20 - $1)
+
+herbstclient set_attr monitors.focus.pad_left $(expr 20 - $1)
+herbstclient set_attr monitors.focus.pad_right $(expr 20 - $1)

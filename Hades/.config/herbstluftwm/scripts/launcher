@@ -5,4 +5,5 @@ if [[ "$(eww windows)" == *"*launcher"* ]]; then
 else
     eww update active="default"
     eww open launcher
+    ~/.config/eww/scripts/ewwmenu
 fi

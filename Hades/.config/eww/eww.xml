@@ -61,6 +61,13 @@ contain are defined. -->
             </box>
         </def>
 
+        <def name="remotespt">
+            <box class="sptbar" orientation="h" space-evenly="false" halign="center" valign="center">
+                <box>{{sptdata}}</box>
+            </box>
+        </def>
+
+
         <def name="workspaces">
             <box orientation="h" class="workspaces" space-evenly="true" halign="center"> <!-- Your workspaces.-->
                 <button onclick="wmctrl -s 0">一</button>
@@ -142,7 +149,7 @@ contain are defined. -->
         <box class="progressbox" space-evenly="true">
             <box orientation="h" class="progress" space-evenly="false" valign="center" halign="center">
                 <box class="progresstext">{{displaypos}}</box>
-                <scale min="0" max="101" value="{{position/duration * 100}}"/>
+                <scale min="0" max="101" value="{{position/duration * 100}}" onchange="~/.config/eww/scripts/jump {{position/duration * 100}} {{duration}} {}"/>
                 <box class="progresstext">{{displaydur}}</box>
             </box>
         </box>
@@ -277,7 +284,7 @@ contain are defined. -->
         </def>
 
         <def name="lock">
-            <button class="button lock" onclick="~/.config/herbstluftwm/scripts/lock"></button>
+            <button class="button lock" onclick="~/.config/eww/scripts/monitor &"></button>
         </def>
 
         <def name="nightmode">
@@ -338,14 +345,14 @@ contain are defined. -->
 
         <def name="bluetooth_left">
             <box orientation="v" space-evenly="false" visible="{{active=='bluetooth'}}">
-                <input class="search" space-evenly="false" value="Search Bluetooth Devices Near You"/>
+                <input class="search" value="Search Bluetooth Devices Near You"/>
                 <box class="results"></box>
             </box>
         </def>
 
         <def name="apps_left">
             <box orientation="v" space-evenly="false" visible="{{active=='apps'}}">
-                <input class="search" space-evenly="false" value="Search Through Installed Applications" onchange="~/.config/eww/scripts/ewwmenu {}"/>
+                <input class="search" value="Search Through Installed Applications" onchange="~/.config/eww/scripts/ewwmenu {}"/>
                 <box space-evenly="true" class="results">
                     <literal content='{{buttonxml}}'/>
                 </box>
@@ -385,6 +392,7 @@ contain are defined. -->
 
         <!--Battery charge var-->
         <script-var name="battery-remaining" interval="2m">~/.config/eww/scripts/getcharge</script-var>
+        <var name="batsprs">"no"</var>
         <script-var name="charge" interval="10s">cat /sys/class/power_supply/BAT0/status</script-var>
 
         <!-- Backlight -->
@@ -400,13 +408,14 @@ contain are defined. -->
         <var name="sky_icon_code"></var>
 
         <!-- Bar -->
-        <script-var name="activespace" interval="20ms">wmctrl -d | grep -w '*' | cut -d ' ' -f 1 && ~/.config/eww/scripts/windowxml</script-var>
+        <!-- <script-var name="activespace" interval="20ms">wmctrl -d | grep -w '*' | cut -d ' ' -f 1 && ~/.config/eww/scripts/windowxml</script-var> -->
         <var name="winxml">hola</var>
+        <script-var interval="500ms" name="sptdata">~/.config/eww/scripts/sptdata</script-var>
     </variables>
 
     <windows>
         <window name="bar" screen="0" stacking="bg">
-            <geometry anchor= "top left" y="20px"/> <!--Specifies geometry-->
+            <geometry anchor= "top left" y="20px" x="25%" width="50%"/> <!--Specifies geometry-->
             <widget>
                 <box>
                     <bar/>
@@ -419,6 +428,13 @@ contain are defined. -->
             <geometry anchor= "bottom left" y="0" x="0"/>
             <widget>
                 <windowbar/>
+            </widget>
+        </window>
+
+        <window name="remotespt" screen="0" stacking="bg">
+            <geometry anchor= "top left" y="0" x="0"/>
+            <widget>
+                <remotespt/>
             </widget>
         </window>
 

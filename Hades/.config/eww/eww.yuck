@@ -1,0 +1,332 @@
+        (defwidget bar [bartype=='default'] 
+            (box :class "bar-container" :orientation "h" :visible "{{bartype" 
+                (box :class "bar" :orientation "h" :hexpand "false" :vexpand "false" 
+                    (left)
+                    (workspaces)
+                    (right))))
+        (defwidget tilebar [bartype=='tiled'] 
+            (box :class "tilebar-container" :orientation "h" :visible "{{bartype" 
+                (box :class "tilebar" :orientation "h" :hexpand "false" :vexpand "false" 
+                    (windowname)
+                    (dotworkspaces)
+                    (tileright))))
+        (defwidget windowbar [] 
+            (box :class "windowbar" :orientation "h" :hexpand "false" :vexpand "false" 
+                (windowname)))
+        (defwidget tileright [] 
+            (box :class "right" :orientation "h" :space-evenly "false" :halign "end" 
+                (slider-vol)
+                (slider-light)
+                (slider-bat)
+                (slider-ram)
+                (time)))
+        (defwidget right [] 
+            (box :class "right" :orientation "h" :space-evenly "false" :halign "end" 
+                (slider-vol)
+                (slider-light)
+                (time)))
+        (defwidget left [] 
+            (box :class "left" :orientation "h" :space-evenly "false" :halign "start" 
+                (slider-bat)
+                (slider-ram)))
+        (defwidget windowname [] 
+            (box :orientation "h" :space-evenly "false" :halign "center" :valign "center" 
+                (literal :content winxml)))
+        (defwidget remotespt [] 
+            (box :class "sptbar" :orientation "h" :space-evenly "false" :halign "center" :valign "center" 
+                (box sptdata)))
+        (defwidget workspaces [] 
+            (box :orientation "h" :class "workspaces" :space-evenly "true" :halign "center>" :;;   :Your  :workspaces.--  
+                   (button :onclick "wmctrl -s 0" "一")
+                   (button :onclick "wmctrl -s 1" "二")
+                   (button :onclick "wmctrl -s 2" "三") 
+                   (button :onclick "wmctrl -s 3" "四")
+                   (button :onclick "wmctrl -s 4" "五")
+               )
+           )
+   
+           (defwidget slider-vol [] 
+               (box :orientation "h" :class "barslider vol" :space-evenly "false" 
+                   (box :class "label" "")
+                   (scale :min 0 :max 101 :value volume :onchange "amixer -D pulse sset Master {}%" )
+               )
+           )
+   
+           (defwidget slider-light [] 
+               (box :orientation "h" :class "barslider light" :space-evenly "false" 
+                   (box :class "label" "")
+                   (scale :min 0 :max 101 :value light :onchange "xbacklight -set {}" )
+               )
+           )
+   
+           (defwidget slider-ram [] 
+               (box :orientation "h" :class "barslider ram" :space-evenly "false" 
+                   (box :class "label" "")
+                   (scale :min 0 :active "false" :max 101 :value ram-used )
+               )
+           )
+   
+           (defwidget slider-bat [if battery-remaining>50 then "high" else if battery-remaining>10 then "med" else "low"] 
+               <box orientation="h" 
+                   class='barslider bat {{if battery-remaining>50 then "high" else if battery-remaining>10 then "med" else "low"}}'
+                   space-evenly="false">
+   
+               (box :class "label ${charge}" if charge==\"Charging\" then \"\" else \"\")
+               (scale :min 0 :active "false" :max 101 :value battery-remaining )
+           </box>
+       )
+   
+       (defwidget sliders [] 
+           <box class="sliderbox" space-evenly="true">
+               <box orientation="v" class="sliders" space-evenly="false" valign="center" halign="center">
+                   (box :orientation "h" :class "bigslider light" :space-evenly "false" 
+                       (box :class "label" "")
+                       (scale :min 0 :max 101 :value light :onchange "xbacklight -set {}" )
+                   )
+                   <box orientation="h" 
+                       class='bigslider {{if battery-remaining>50 then "high" else if battery-remaining>10 then "med" else "low"}}'
+                       space-evenly="false">
+                       (box :class "label ${charge}" if charge==\"Charging\" then \"\" else \"\")
+                       (scale :min 0 :active "false" :max 101 :value battery-remaining )
+                   </box>
+               </box>
+           </box>
+       )
+   
+       (defwidget volume [] 
+           (box :class "volumebox" :space-evenly "true" 
+               (box :orientation "h" :class "volume" :space-evenly "false" :halign "center" :valign "center" 
+                   (box :class "label" "")
+                   (scale :min 0 :max 101 :value volume :onchange "amixer -D pulse sset Master {}%" )
+               )
+           )
+       )
+   
+       (defwidget progress [position/duration * 100] 
+           (box :class "progressbox" :space-evenly "true" 
+               (box :orientation "h" :class "progress" :space-evenly "false" :valign "center" :halign "center" 
+                   (box :class "progresstext" displaypos)
+                   (scale :min 0 :max 101 :value position/duration * 100 :onchange "~/.config/eww/scripts/jump ${position/duration * 100} ${duration} {}" )
+                   (box :class "progresstext" displaydur)
+               )
+           )
+       )
+   
+       (defwidget time [] 
+           <!--Time
+        (box :class "time" "${hour}:${min}"))
+        (defwidget musicbox [] 
+            <box class="musicbox" orientation="v">
+                <box orientation="h" class="music" valign="center" space-evenly="false">
+                    (box :halign "start" :class "art" :style "background-image: url('{{impath}}');")
+                    (!-- :<image  :path impath :class "albumart" :height 70 :width 70) -->
+                    (box :class "musictext" :orientation "v" :space-evenly "false" :valign "center" :halign "start" 
+                        (label :class "title bold" :text music :halign "start")
+                        (label :class "artist" :text artist :halign "start"))
+                </box>
+            </box>)
+        (defwidget controls [] 
+            (box :class "controlbox" 
+                (box :orientation "v" :class "controls" :valign "center" :space-evenly "false" 
+                    (button :class "control" :onclick "~/.config/herbstluftwm/scripts/media next" "")
+                    (button :class "control" :onclick "~/.config/herbstluftwm/scripts/media play-pause" if playing==\"Playing\" then \"\" else \"\")
+                    (button :class "control last" :onclick "~/.config/herbstluftwm/scripts/media previous" ""))))
+        (defwidget todaybox [] 
+            (box :class "todaybox" :valign "center" :halign "start" 
+                (box :class "today" :orientation "v" :valign "center" :space-evenly "false" 
+                    (box :class "date" :space-evenly "false" date)
+                    (box :class "day" :space-evenly "false" day))))
+        (defwidget timebox [] 
+            (box :class "timebox" :valign "center" :halign "center" :space-evenly "true" 
+                (box :class "bigtime" :halign "center" "${hour}:${min}")))
+        (defwidget mainweather [] 
+            (box :class "mainweather-box" :space-evenly "true" 
+                (box :class "mainweather" :orientation "v" :space-evenly "false" :valign "center" 
+                    (box :class "sky_icon code-${sky_icon_code}" :space-evenly "false" sky_icon)
+                    (box :class "sky bold" :space-evenly "false" sky)
+                    (box :class "feeling" :space-evenly "false" "Feels like ${feeling}°F"))))
+        (defwidget sideweather [] 
+            (box :class "sideweather-box" :space-evenly "true" :halign "start" 
+                (box :class "sideweather" :orientation "v" :space-evenly "false" :valign "center" 
+                    (box :orientation "h" :class "weatherline" :space-evenly "false" 
+                        (box :class "weather_icon temp" "")
+                        (box :class "weather" "${temp}°F"))
+                    (box :orientation "h" :class "weatherline windline" :space-evenly "false" 
+                        (box :class "weather_icon wind" "")
+                        (box :class "weather" "${wind} m/h"))
+                    (box :orientation "h" :class "weatherline lastline" :space-evenly "false" 
+                        (box :class "weather_icon humidity" "")
+                        (box :class "weather" "${humidity}%")))))
+        (defwidget stats [cpu*1.0] 
+            (box :class "statbox" :space-evenly "true" 
+                (box :orientation "h" :space-evenly "false" :halign "center" :valign "center" 
+                    (box :class "first" :space-evenly "false" :valign "center" 
+                        (box :class "label cpu" "")
+                        (label :class "stat" :text "${cpu*1.0}%" :valign "center"))
+                    (box :space-evenly "false" :valign "center" 
+                        (box :class "label ram" "")
+                        (label :class "stat" :text "${ram-used*1.0}%" :valign "center")))))
+        (defwidget face [] 
+            (box :space-evenly "false" :valign "center" :halign "center" 
+                (box :class "face" :style "background-image: url('/home/pradyungn/face.jpg');")))
+        (defwidget name [] 
+            (box :class "namebox" :valign "center" :halign "center" :space-evenly "true"))
+        (defwidget name [] 
+            (box :class "namebox" :space-evenly "true" 
+                (box :orientation "h" :class "name" :space-evenly "false" :halign "center" :valign "center" 
+                    (box :class "bold" "pradyungn")
+                    (box "/Hades"))))
+        (defwidget apps [active!='apps'] 
+            (button :class "apps launchbutton" :onclick "eww update active" :visible "{{active!" ""))
+        (defwidget home [active!='default'] 
+            (button :class "home launchbutton" :onclick "eww update active" :visible "{{active!" ""))
+        (defwidget wifi [active!='wifi'] 
+            (button :class "wifi launchbutton" :onclick "eww update active" :visible "{{active!" "直"))
+        (defwidget bluetooth [active!='bluetooth'] 
+            (button :class "bluetooth launchbutton" :onclick "eww update active" :visible "{{active!" ""))
+        (defwidget sleep [] 
+            (button :class "button sleep" :onclick "systemctl suspend && ~/.config/herbstluftwm/scripts/lock" ""))
+        (defwidget lock [] 
+            (button :class "button lock" :onclick "~/.config/eww/scripts/monitor &" ""))
+        (defwidget nightmode [] 
+            (button :class "button nightmode" :onclick "~/.config/herbstluftwm/scripts/nightmode" ""))
+        (defwidget reboot [] 
+            (button :class "button reboot" :onclick "systemctl restart" ""))
+        (defwidget shutdown [] 
+            (button :class "button shutdown" :onclick "systemctl -i poweroff" ""))
+        (defwidget logout [] 
+            (button :class "button logout" :onclick "herbstclient quit" ""))
+        (defwidget exit [] 
+            (button :class "altbutton exit" :onclick "eww close launcher" "窱"))
+        (defwidget refresh [] 
+            (button :class "altbutton refresh" :onclick "eww reload" ""))
+        (defwidget default_left [active=='default'] 
+            (box :visible "{{active" :class init_active :orientation "v" :space-evenly "false" 
+                (box :orientation "h" :space-evenly "false" 
+                    (box :class "facegroup" :orientation "v" :space-evenly "false" 
+                        (face)
+                        (name))
+                    (box :orientation "v" :space-evenly "false" 
+                        (box :class "buttongroup" :orientation "h" :space-evenly "false" 
+                            (sleep)
+                            (lock)
+                            (nightmode))
+                        (box :class "buttongroup" :orientation "h" :space-evenly "false" 
+                            (reboot)
+                            (shutdown)
+                            (logout))
+                        (todaybox)))
+                (sliders)))
+        (defwidget wifi_left [active=='wifi'] 
+            (box :orientation "v" :space-evenly "false" :visible "{{active" 
+                (input :class "search" :space-evenly "false" :value "Search WiFi Networks Near You")
+                (box :class "results")))
+        (defwidget bluetooth_left [active=='bluetooth'] 
+            (box :orientation "v" :space-evenly "false" :visible "{{active" 
+                (input :class "search" :value "Search Bluetooth Devices Near You")
+                (box :class "results")))
+        (defwidget apps_left [active=='apps'] 
+            (box :orientation "v" :space-evenly "false" :visible "{{active" 
+                (input :class "search" :value "Search Through Installed Applications" :onchange "~/.config/eww/scripts/ewwmenu {}")
+                (box :space-evenly "true" :class "results" 
+                    (literal :content "'{{buttonxml}}'"))))
+    
+
+    
+        ;; What's Active?
+        (defvar active "default")
+        (defvar buttonxml "mbruh")
+        (defvar bartype "default")
+
+        ;;  Music vars 
+        (defpoll music :interval "500ms"  "~/.config/eww/scripts/gettitle")
+        (defvar artist)
+        (defvar duration)
+        (defvar position)
+        (defvar displaydur)
+        (defvar displaypos)
+        (defvar playing)
+        (defpoll impath :interval "500ms"  "echo \"/home/pradyungn/.config/eww/temp.jpg\"")
+
+        ;; Volume var
+        (defpoll volume :interval "500ms"  "~/.config/eww/scripts/getvol")
+
+        ;; Date vars
+        (defpoll min :interval "10s"  "date \"+%M\"")
+        (defpoll hour :interval "1m"  "date \"+%H\"")
+        (defpoll date :interval "10m"  "date | cut -d \" \" -f 2-3")
+        (defpoll day :interval "10m"  "date | cut -d \" \" -f 1")
+
+        ;; utilization vars
+        (defpoll ram-used :interval "1s"  "~/.config/eww/scripts/getram")
+        (defpoll cpu :interval "1s"  "~/.config/eww/scripts/getcpu")
+
+        ;; Battery charge var
+        (defpoll battery-remaining :interval "2m"  "~/.config/eww/scripts/getcharge")
+        (defvar batsprs "\"no\"")
+        (defpoll charge :interval "10s"  "cat /sys/class/power_supply/BAT0/status")
+
+        ;;  Backlight 
+        (defpoll light :interval "500ms"  "xbacklight -get")
+
+        ;;  Weather Data 
+        (defpoll sky :interval "10m"  "~/.config/eww/scripts/weather;")
+        (defvar temp)
+        (defvar feeling)
+        (defvar humidity)
+        (defvar wind)
+        (defvar sky_icon)
+        (defvar sky_icon_code)
+
+        ;;  Bar 
+        ;;  (defpoll activespace :interval "20ms"  "wmctrl -d | grep -w '*' | cut -d ' ' -f 1 && ~/.config/eww/scripts/windowxml")
+         (defvar winxml "hola")
+        (defpoll sptdata :interval "500ms"  "~/.config/eww/scripts/sptdata")
+                (defwindow bar :screen 0 :stacking "bg" 
+			    :geometry (geometry :anchor  :"top left"  :y "20px")
+			     
+				;; Specifies geometry
+            
+                (box 
+                    (bar)
+                    (tilebar)))
+        (defwindow windowbar :screen 0 :stacking "bg" 
+			    :geometry (geometry :anchor  :"bottom left"  :y 0 :x 0)
+			     				(windowbar))
+        (defwindow remotespt :screen 0 :stacking "bg" 
+			    :geometry (geometry :anchor  :"top left"  :y 0 :x 0)
+			     				(remotespt))
+        (defwindow launcher :screen 0 :stacking "fg" :focusable "false" 
+			    :geometry (geometry :anchor  :"top left"  :width "100%" :height "100%")
+			     
+				;; Specifies geometry
+            
+                (box :class "screen" :space-evenly "true" 
+                    (box :orientation "h" :space-evenly "false" :halign "center" :valign "center" 
+                        (box :class "left" :orientation "v" :space-evenly "false" 
+                            (default_left)
+                            (wifi_left)
+                            (bluetooth_left)
+                            (apps_left)
+                            (box :class "launchbuttongroup" :orientation "h" :space-evenly "false" 
+                                (home)
+                                (apps)
+                                (wifi)
+                                (bluetooth)))
+                        (box :class "right" :orientation "v" :valign "center" :halign "center" :space-evenly "false" 
+                            (box :orientation "h" :space-evenly "false" 
+                                (box :orientation "v" :space-evenly "false" 
+                                    (musicbox)
+                                    (progress))
+                                (controls))
+                            (box :orientation "h" :space-evenly "false" :class "statgroup" 
+                                (volume)
+                                (stats))
+                            (box :orientation "h" :space-evenly "false" :class "weathergroup" 
+                                (mainweather)
+                                (sideweather)
+                                (box :orientation "v" :space-evenly "false" :class "altbuttongroup" 
+                                    (exit)
+                                    (refresh)))))))
+    
+

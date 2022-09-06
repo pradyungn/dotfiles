@@ -6,6 +6,6 @@
 # |  __/| |\  | MIT License
 # |_|   |_| \_| Copyright 2021 Pradyun Narkadamilli
 
-~/.config/herbstluftwm/configs/theme
 ~/.config/herbstluftwm/configs/keybinds
 ~/.config/herbstluftwm/configs/setup
+~/.config/herbstluftwm/configs/theme

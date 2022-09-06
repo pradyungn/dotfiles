@@ -1,0 +1,11 @@
+#!/bin/bash
+
+data="$(spt pb -f '%t - %a')"
+
+if [ ${#data} -gt 60 ];
+then
+    data="${data:0:47}"
+    echo "$data..."
+else
+    echo "$data"
+fi
